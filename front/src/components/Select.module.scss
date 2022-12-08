@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    color: #7e88c3;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    text-align: left;
+  }
+
+  select {
+    padding: 17px 20px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    text-align: left;
+    color: #0c0e16;
+  }
+}
+
+    /*
+    <div className={classes.container}>
+      <label htmlFor="terms       ">Payment Terms</label>
+      <select name="terms" id="terms">
+        <option value={30}>30</option>
+        <option value={7}>7</option>
+        <option value={1}>1</option>
+      </select>
+    </div>    */

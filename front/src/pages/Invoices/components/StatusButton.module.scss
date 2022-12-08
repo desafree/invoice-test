@@ -1,0 +1,23 @@
+.container{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(51, 214, 159, 0.06);
+  border-radius: 6px;
+  color: #33D69F;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+
+  span{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #33D69F;
+    margin-right: 8px;
+  }
+}
+

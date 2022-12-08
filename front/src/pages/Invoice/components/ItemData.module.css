@@ -1,0 +1,48 @@
+@charset "UTF-8";
+.container {
+  display: flex;
+}
+.container h4 {
+  color: #7e88c3;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  text-align: left;
+}
+.container h3 {
+  color: #0c0e16;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  text-align: left;
+}
+.container > * {
+  flex: 1 1 0;
+  width: 0;
+}
+.container > *:nth-child(1) {
+  flex: 3 1 0 !important;
+  text-align: left;
+}
+.container > *:nth-child(2) {
+  text-align: center;
+}
+.container > *:nth-child(3) {
+  text-align: right;
+}
+.container > *:nth-child(4) {
+  flex: 2 1 0 !important;
+  text-align: right;
+}
+
+/*
+    <div className={classes.container}>
+      <h3>Banner Design</h3>
+      <h4>1</h4>
+      <h4>£ 156.00</h4>
+      <h3>£ 156.00</h3>
+    </div>    */
+
+/*# sourceMappingURL=ItemData.module.css.map */
