@@ -3,20 +3,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(51, 214, 159, 0.06);
   border-radius: 6px;
-  color: #33D69F;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
   letter-spacing: -0.25px;
+}
+.container.paid {
+  background: rgba(51, 214, 159, 0.06);
+  color: #33d69f;
+}
+.container.paid span {
+  background: #33d69f;
+}
+.container.draft {
+  background: rgba(55, 59, 83, 0.06);
+  color: #373b53;
+}
+.container.draft span {
+  background: #373b53;
+}
+.container.pending {
+  background: rgba(255, 143, 0, 0.06);
+  color: #FF8F00;
+}
+.container.pending span {
+  background: #FF8F00;
 }
 .container span {
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #33D69F;
   margin-right: 8px;
 }
 

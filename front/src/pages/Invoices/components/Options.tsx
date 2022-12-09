@@ -1,16 +1,25 @@
-import React from "react";
+import React, { FC } from "react";
 import classes from "./Options.module.css";
 import Filter from "./Filter";
 import AddInvoice from "./AddInvoice";
+import FilterType from "../../../typescript/types/Filter";
+import useInvoicesFiltered from "../../../react-query/hooks/useInvoiceFiltered";
 
-const Options = () => {
+interface Props {
+  handleFilter: (newFilter: FilterType) => void;
+  filter: FilterType;
+}
+
+const Options: FC<Props> = ({ handleFilter, filter }) => {
+  const { data } = useInvoicesFiltered(filter);
+
   return (
     <div className={classes.container}>
       <div className={classes.title}>
         <h2>Invoices</h2>
-        <p>There are 7 total invoices</p>
+        <p>There are {data?.length} total invoices</p>
       </div>
-      <Filter></Filter>
+      <Filter onChange={handleFilter}></Filter>
       <AddInvoice></AddInvoice>
     </div>
   );

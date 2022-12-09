@@ -23,6 +23,16 @@ app.get("/invoices", async (req, res) => {
   }
 });
 
+app.get("/invoices/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const invoice = await InvoiceModel.findOne({ id: id });
+    res.send(invoice);
+  } catch (error) {
+    res.status(404).send(error);
+  }
+});
+
 app.post("/invoices", async (req, res) => {
   const invoice = new InvoiceModel({
     id: req.id,

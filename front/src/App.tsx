@@ -10,6 +10,7 @@ function App() {
   return (
     <ThemeContextProvider>
       <QueryProvider>
+        {/*        fix query client*/}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Invoices></Invoices>}></Route>

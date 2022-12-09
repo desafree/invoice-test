@@ -5,7 +5,6 @@ const FormOptions = () => {
   return (
     <div className={classes.container}>
       <button>Discard</button>
-      <button>Save as Draft</button>
       <button>Save & Send</button>
     </div>
   );

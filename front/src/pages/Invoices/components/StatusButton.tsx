@@ -1,11 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import classes from "./StatusButton.module.css";
+import Filter from "../../../typescript/types/Filter";
 
-const StatusButton = () => {
+interface Props {
+  status: Filter;
+}
+
+const StatusButton: FC<Props> = ({ status }) => {
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} ${classes[status]}`}>
       <span></span>
-      Paid
+      {status}
     </div>
   );
 };

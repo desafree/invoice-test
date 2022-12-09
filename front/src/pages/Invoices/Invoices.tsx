@@ -8,10 +8,6 @@ const Invoices = () => {
   return (
     <Layout>
       <Content />
-      {/*      {createPortal(
-        <InvoiceForm></InvoiceForm>,
-        document.getElementById("pop-up")!
-      )}*/}
     </Layout>
   );
 };
