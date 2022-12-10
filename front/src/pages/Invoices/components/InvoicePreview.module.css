@@ -39,7 +39,7 @@
   letter-spacing: -0.8000000119px;
   text-align: left;
 }
-.container button {
+.container a {
   background: transparent;
   cursor: pointer;
   border: none;

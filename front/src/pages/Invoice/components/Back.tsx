@@ -1,14 +1,20 @@
 import React from "react";
 import classes from "./Back.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Back = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
-    <div className={classes.container}>
+    <button className={classes.container} onClick={handleClick}>
       <span>
         <img src="/images/icon-arrow-left.svg" alt="arrow left" />
       </span>
       Go back
-    </div>
+    </button>
   );
 };
 

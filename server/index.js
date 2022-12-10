@@ -7,12 +7,18 @@ const InvoiceModel = require("./models/Invoice");
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(
-  "mongodb+srv://desafree:F5uq0CI7UCu7Fcc4@cluster0.bcs0k91.mongodb.net/feinvoice?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-  }
-);
+mongoose
+  .connect(
+    "mongodb+srv://desafree:F5uq0CI7UCu7Fcc4@cluster0.bcs0k91.mongodb.net/feinvoice?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+    }
+  )
+  .then(() => {
+    app.listen(3001, () => {
+      console.log("Server running on port 3001");
+    });
+  });
 
 app.get("/invoices", async (req, res) => {
   try {
@@ -70,27 +76,22 @@ app.post("/invoices", async (req, res) => {
 app.delete("/invoices/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    await InvoiceModel.findByIdAndDelete(id);
+    await InvoiceModel.deleteOne({ id: id });
     res.send({ message: "deleted successfully" });
   } catch (error) {
     res.status(404).send(err);
   }
 });
 
-app.put("/posts/:id", async (req, res) => {
-  const id = req.params.id;
+app.put("/invoices/:id", async (req, res) => {
   try {
-    var updatedValue = await InvoiceModel.findByIdAndUpdate(
-      id,
-      req.updatedObj,
+    const updatedValue = await InvoiceModel.findOneAndUpdate(
+      { id: req.params.id },
+      { ...req.body, id: req.params.id },
       { new: true }
     );
     res.send(updatedValue);
   } catch (error) {
     res.status(404).send(error);
   }
-});
-
-app.listen(3001, () => {
-  console.log("Server running on port 3001");
 });

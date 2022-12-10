@@ -1,13 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 import classes from "./ItemData.module.css";
+import item from "../../../typescript/interfaces/Item";
+import formatNumber from "../../../utils/formatNumber";
 
-const ItemData = () => {
+interface Props {
+  data: item;
+}
+
+const ItemData: FC<Props> = ({ data }) => {
   return (
     <div className={classes.container}>
-      <h3>Banner Design</h3>
-      <h4>1</h4>
-      <h4>£ 156.00</h4>
-      <h3>£ 156.00</h3>
+      <h3>{data.name}</h3>
+      <h4>{data.quantity}</h4>
+      <h4>£ {formatNumber(data.price)}</h4>
+      <h3>£ {formatNumber(data.price * data.quantity)}</h3>
     </div>
   );
 };

@@ -1,24 +1,28 @@
 import React, { FC, useState } from "react";
 import classes from "./InvoiceForm.module.css";
-import FormData from "./FormData";
-import ItemsList from "./ItemsList";
-import stopEventBubbling from "../../../utils/stopEventBubbling";
-import { useForm } from "react-hook-form";
+import useUpdateInvoice from "../../../react-query/hooks/useUpdateInvoice";
 import Item from "../../../typescript/interfaces/Item";
-import Invoice from "../../../typescript/interfaces/Invoice";
-import generateKey from "../../../utils/generateKey";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../../../utils/formUtils";
-import FormOptions from "./FormOptions";
-import useAddInvoice from "../../../react-query/hooks/useAddInvoice";
+import Invoice from "../../../typescript/interfaces/Invoice";
+import generateKey from "../../../utils/generateKey";
+import stopEventBubbling from "../../../utils/stopEventBubbling";
+import FormData from "./FormData";
+import ItemsList from "../../Invoices/components/ItemsList";
+import FormOptions from "../../Invoices/components/FormOptions";
+import { useParams } from "react-router-dom";
+import useInvoice from "../../../react-query/hooks/useInvoice";
 
 interface Props {
   close: () => void;
 }
 
 const InvoiceForm: FC<Props> = ({ close }) => {
-  const [items, setItems] = useState<Item[]>([]);
-  const addInvoice = useAddInvoice();
+  const { id } = useParams();
+  const { data } = useInvoice(id as string);
+  const [items, setItems] = useState<Item[]>(data?.items || []);
+  const updateInvoice = useUpdateInvoice();
   const {
     register,
     handleSubmit,
@@ -55,7 +59,7 @@ const InvoiceForm: FC<Props> = ({ close }) => {
         return total + curr.quantity * curr.price;
       }, 0),
     };
-    addInvoice.mutate(invoice);
+    updateInvoice.mutate({ id: id as string, invoice: { ...invoice } });
     setItems([]);
     reset();
     close();

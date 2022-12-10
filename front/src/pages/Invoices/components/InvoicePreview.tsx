@@ -5,6 +5,7 @@ import Invoice from "../../../typescript/interfaces/Invoice";
 import formatDate from "../../../utils/formatDate";
 import formatNumber from "../../../utils/formatNumber";
 import Filter from "../../../typescript/types/Filter";
+import { Link } from "react-router-dom";
 
 interface Props {
   data: Invoice;
@@ -24,9 +25,9 @@ const InvoicePreview: FC<Props> = ({ data }) => {
       <h5>{data.clientName}</h5>
       <h3>£{formattedTotal}</h3>
       <StatusButton status={data.status as Filter}></StatusButton>
-      <button>
+      <Link to={`/${data.id}`}>
         <img src="/images/icon-arrow-right.svg" alt="arrow right" />
-      </button>
+      </Link>
     </li>
   );
 };

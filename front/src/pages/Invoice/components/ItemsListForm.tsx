@@ -1,15 +1,20 @@
 import React, { FC } from "react";
-import classes from "./ItemsList.module.css";
-import Item from "./Item";
+import classes from "./ItemsListForm.module.css";
+import Item from "../../Invoices/components/Item";
 import ItemType from "../../../typescript/interfaces/Item";
 import generateKey from "../../../utils/generateKey";
+import useInvoice from "../../../react-query/hooks/useInvoice";
+import { useParams } from "react-router-dom";
 
 interface Props {
   setItems: React.Dispatch<React.SetStateAction<ItemType[]>>;
   items: ItemType[];
 }
 
-const ItemsList: FC<Props> = ({ setItems, items }) => {
+const ItemsListForm: FC<Props> = ({ setItems, items }) => {
+  const { id } = useParams();
+  const { data } = useInvoice(id as string);
+
   const handleClick = () => {
     const newItem = {
       name: "",
@@ -51,7 +56,7 @@ const ItemsList: FC<Props> = ({ setItems, items }) => {
         {items.map((item) => {
           return (
             <Item
-              key={item.name}
+              key={item.id}
               removeItem={removeItem}
               data={item}
               updateItems={updateItems}
@@ -70,4 +75,4 @@ const ItemsList: FC<Props> = ({ setItems, items }) => {
   );
 };
 
-export default ItemsList;
+export default ItemsListForm;

@@ -1,8 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import classes from "./ItemsList.module.css";
 import ItemData from "./ItemData";
+import item from "../../../typescript/interfaces/Item";
 
-const ItemsList = () => {
+interface Props {
+  items: item[];
+}
+
+const ItemsList: FC<Props> = ({ items }) => {
   return (
     <div className={classes.container}>
       <div className={classes.tags}>
@@ -12,8 +17,10 @@ const ItemsList = () => {
         <h4>Total</h4>
       </div>
       <ul>
-        <ItemData></ItemData>
-        <ItemData></ItemData>
+        {/*          problema con la key*/}
+        {items.map((item, index) => {
+          return <ItemData data={item} key={item.name}></ItemData>;
+        })}
       </ul>
     </div>
   );
