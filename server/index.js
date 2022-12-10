@@ -35,35 +35,28 @@ app.get("/invoices/:id", async (req, res) => {
 
 app.post("/invoices", async (req, res) => {
   const invoice = new InvoiceModel({
-    id: req.id,
-    createdAt: req.createdAt,
-    paymentDue: req.paymentDue,
-    description: req.description,
-    paymentTerms: req.paymentTerms,
-    clientName: req.clientName,
-    clientEmail: req.clientEmail,
-    status: req.status,
+    id: req.body.id,
+    createdAt: req.body.createdAt,
+    paymentDue: req.body.paymentDue,
+    description: req.body.description,
+    paymentTerms: req.body.paymentTerms,
+    clientName: req.body.clientName,
+    clientEmail: req.body.clientEmail,
+    status: req.body.status,
     senderAddress: {
-      street: req.street,
-      city: req.city,
-      postCode: req.postCode,
-      country: req.country,
+      street: req.body.senderAddress.street,
+      city: req.body.senderAddress.city,
+      postCode: req.body.senderAddress.postCode,
+      country: req.body.senderAddress.country,
     },
     clientAddress: {
-      street: req.clientStreet,
-      city: req.clientCity,
-      postCode: req.clientPostCOde,
-      country: req.clientcountry,
+      street: req.body.clientAddress.street,
+      city: req.body.clientAddress.city,
+      postCode: req.body.clientAddress.postCode,
+      country: req.body.clientAddress.country,
     },
-    items: [
-      {
-        name: req.itemName,
-        quantity: req.itemQuantity,
-        price: req.itemPrice,
-        total: req.itemTotal,
-      },
-    ],
-    total: req.total,
+    items: req.body.items,
+    total: req.body.total,
   });
 
   try {

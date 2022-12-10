@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import classes from "./ItemsList.module.css";
 import Item from "./Item";
-import FormOptions from "./FormOptions";
 import ItemType from "../../../typescript/interfaces/Item";
 import generateKey from "../../../utils/generateKey";
 
@@ -66,7 +65,6 @@ const ItemsList: FC<Props> = ({ setItems, items }) => {
       >
         +Add New Item
       </button>
-      <FormOptions></FormOptions>
     </div>
   );
 };

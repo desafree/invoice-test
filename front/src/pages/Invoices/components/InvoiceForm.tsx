@@ -7,7 +7,11 @@ import { useForm } from "react-hook-form";
 import Item from "../../../typescript/interfaces/Item";
 import Invoice from "../../../typescript/interfaces/Invoice";
 import generateKey from "../../../utils/generateKey";
-import Filter from "../../../typescript/types/Filter";
+import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "../../../utils/formUtils";
+import FormOptions from "./FormOptions";
+import useAddInvoice from "../../../react-query/hooks/useAddInvoice";
+import { useMutation } from "react-query";
 
 interface Props {
   close: () => void;
@@ -15,15 +19,23 @@ interface Props {
 
 const InvoiceForm: FC<Props> = ({ close }) => {
   const [items, setItems] = useState<Item[]>([]);
-  const { register, handleSubmit, reset } = useForm();
+  const addInvoice = useAddInvoice();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data: any) => {
     const invoice: Invoice = {
       senderAddress: {
-        street: "19 Union Terrace",
-        city: "London",
-        postCode: "E1 3EZ",
-        country: "United Kingdom",
+        street: data["street-from"],
+        city: data["city-from"],
+        postCode: data["postcode-from"],
+        country: data["country-from"],
       },
       clientAddress: {
         street: data["street-to"],
@@ -41,20 +53,22 @@ const InvoiceForm: FC<Props> = ({ close }) => {
       status: data.status,
       items: items,
       total: items.reduce((total, curr) => {
-        return total * (curr.quantity * curr.price);
+        return total + curr.quantity * curr.price;
       }, 0),
     };
-    console.log(invoice);
+    addInvoice.mutate(invoice);
     setItems([]);
     reset();
+    close();
   };
 
   return (
     <div className={classes.container} onClick={close}>
       <form onClick={stopEventBubbling} onSubmit={handleSubmit(onSubmit)}>
         <h3>New Invoice</h3>
-        <FormData register={register}></FormData>
+        <FormData register={register} errors={errors}></FormData>
         <ItemsList setItems={setItems} items={items}></ItemsList>
+        <FormOptions reset={reset}></FormOptions>
       </form>
     </div>
   );
