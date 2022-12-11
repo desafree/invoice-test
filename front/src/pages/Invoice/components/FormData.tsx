@@ -182,16 +182,14 @@ const FormData: FC<Props> = ({ register, errors }) => {
           </div>
           <div className={classes.input}>
             <label htmlFor="terms">Payment Terms</label>
-            <select id="terms" {...register("terms")}>
-              <option value={30} selected={data?.paymentTerms === 30}>
-                30
-              </option>
-              <option value={7} selected={data?.paymentTerms === 7}>
-                7
-              </option>
-              <option value={1} selected={data?.paymentTerms === 1}>
-                1
-              </option>
+            <select
+              id="terms"
+              {...register("terms")}
+              defaultValue={data?.paymentTerms}
+            >
+              <option value={30}>30</option>
+              <option value={7}>7</option>
+              <option value={1}>1</option>
             </select>
             {errors["terms"]?.message && (
               <p className={classes.error}>
@@ -216,16 +214,14 @@ const FormData: FC<Props> = ({ register, errors }) => {
           </div>
           <div className={classes.input}>
             <label htmlFor="status">Payment Terms</label>
-            <select id="status" {...register("status")}>
-              <option value={"pending"} selected={data?.status === "pending"}>
-                pending
-              </option>
-              <option value={"draft"} selected={data?.status === "draft"}>
-                draft
-              </option>
-              <option value={"paid"} selected={data?.status === "paid"}>
-                paid
-              </option>
+            <select
+              id="status"
+              {...register("status")}
+              defaultValue={data?.status}
+            >
+              <option value={"pending"}>pending</option>
+              <option value={"draft"}>draft</option>
+              <option value={"paid"}>paid</option>
             </select>
             {errors["status"]?.message && (
               <p className={classes.error}>

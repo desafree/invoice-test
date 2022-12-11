@@ -1,3 +1,6 @@
+.container .error {
+  color: red;
+}
 .container > div h4 {
   color: #7c5dfa;
   font-size: 12px;

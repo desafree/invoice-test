@@ -17,10 +17,9 @@ const Filter: FC<Props> = ({ onChange }) => {
       id="status"
       className={classes.container}
       onChange={handleChange}
+      defaultValue="default"
     >
-      <option value="default" selected={true}>
-        Filter by status: default
-      </option>
+      <option value="default">Filter by status: default</option>
       <option value="paid">Paid</option>
       <option value="pending">Pending</option>
       <option value="draft">Draft</option>

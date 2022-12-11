@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import classes from "./InvoicesList.module.css";
 import InvoicePreview from "./InvoicePreview";
-import data from "../../../defaultdata";
 import Filter from "../../../typescript/types/Filter";
 import useInvoicesFiltered from "../../../react-query/hooks/useInvoiceFiltered";
 
@@ -15,11 +14,15 @@ const InvoicesList: FC<Props> = ({ activeFilter }) => {
   if (data) {
     return (
       <ul className={classes.container}>
-        {data?.map((invoice) => {
-          return (
-            <InvoicePreview key={invoice.id} data={invoice}></InvoicePreview>
-          );
-        })}
+        {data.length === 0 ? (
+          <p>No invoices...</p>
+        ) : (
+          data.map((invoice) => {
+            return (
+              <InvoicePreview key={invoice.id} data={invoice}></InvoicePreview>
+            );
+          })
+        )}
       </ul>
     );
   }

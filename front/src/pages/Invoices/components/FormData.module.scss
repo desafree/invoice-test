@@ -1,4 +1,8 @@
 .container {
+
+  .error {
+    color: red;
+  }
   & > div {
     h4 {
       color: #7c5dfa;

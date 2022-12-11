@@ -4,7 +4,6 @@ import InvoiceData from "./InvoiceData";
 import ItemsList from "./ItemsList";
 import Total from "./Total";
 import useInvoice from "../../../react-query/hooks/useInvoice";
-import useInvoicesFiltered from "../../../react-query/hooks/useInvoiceFiltered";
 import { useParams } from "react-router-dom";
 
 const Invoice = () => {

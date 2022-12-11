@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import classes from "./InvoiceData.module.css";
 import Invoice from "../../../typescript/interfaces/Invoice";
 import formatDate from "../../../utils/formatDate";
@@ -8,8 +8,14 @@ interface Props {
 }
 
 const InvoiceData: FC<Props> = ({ data }) => {
-  const formattedDate = formatDate(data.createdAt);
-  const formattedPaymentDate = formatDate(data.paymentDue);
+  const formattedDate = useMemo(
+    () => formatDate(data.createdAt),
+    [data.createdAt]
+  );
+  const formattedPaymentDate = useMemo(
+    () => formatDate(data.paymentDue),
+    [data.paymentDue]
+  );
 
   return (
     <div className={classes.container}>

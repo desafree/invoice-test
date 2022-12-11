@@ -4,6 +4,7 @@
   margin-bottom: 18px;
 }
 .container > * {
+  text-indent: 10px;
   flex: 1 1 0;
   width: 0;
   color: #7e88c3;

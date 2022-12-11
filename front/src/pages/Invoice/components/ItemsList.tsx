@@ -17,9 +17,8 @@ const ItemsList: FC<Props> = ({ items }) => {
         <h4>Total</h4>
       </div>
       <ul>
-        {/*          problema con la key*/}
         {items.map((item, index) => {
-          return <ItemData data={item} key={item.name}></ItemData>;
+          return <ItemData data={item} key={item.id}></ItemData>;
         })}
       </ul>
     </div>

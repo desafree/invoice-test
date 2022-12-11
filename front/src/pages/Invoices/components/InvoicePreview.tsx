@@ -6,14 +6,18 @@ import formatDate from "../../../utils/formatDate";
 import formatNumber from "../../../utils/formatNumber";
 import Filter from "../../../typescript/types/Filter";
 import { Link } from "react-router-dom";
+import { useMemo } from "react";
 
 interface Props {
   data: Invoice;
 }
 
 const InvoicePreview: FC<Props> = ({ data }) => {
-  const formattedTotal = formatNumber(data.total);
-  const formattedDate = formatDate(data.paymentDue);
+  const formattedTotal = useMemo(() => formatNumber(data.total), [data.total]);
+  const formattedDate = useMemo(
+    () => formatDate(data.paymentDue),
+    [data.paymentDue]
+  );
 
   return (
     <li className={classes.container}>

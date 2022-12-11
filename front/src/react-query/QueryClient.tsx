@@ -6,7 +6,9 @@ interface Props {
   children: ReactNode;
 }
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 5000 } },
+});
 
 const QueryProvider: FC<Props> = ({ children }) => {
   return (

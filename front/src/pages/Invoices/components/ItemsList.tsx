@@ -33,7 +33,6 @@ const ItemsList: FC<Props> = ({ setItems, items }) => {
       if (item.id === newItem.id) return newItem;
       return item;
     });
-
     setItems(updatedItems);
   };
 
@@ -51,7 +50,7 @@ const ItemsList: FC<Props> = ({ setItems, items }) => {
         {items.map((item) => {
           return (
             <Item
-              key={item.name}
+              key={item.id}
               removeItem={removeItem}
               data={item}
               updateItems={updateItems}

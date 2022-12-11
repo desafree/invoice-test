@@ -9,38 +9,54 @@ interface Props {
 }
 
 const Item: FC<Props> = ({ removeItem, data, updateItems }) => {
-  const [name, setName] = useState(data.name);
-  const [quantity, setQuantity] = useState(data.quantity);
-  const [price, setPrice] = useState(data.price);
+  const [formData, setFormData] = useState({
+    name: data.name,
+    id: data.id,
+    quantity: data.quantity,
+    price: data.price,
+  } as ItemType);
 
   useEffect(() => {
-    updateItems({
-      name: name,
-      quantity: quantity,
-      price: price,
-      total: quantity * price,
-      id: data.id,
-    } as ItemType);
-  }, [name, quantity, price]);
+    updateItems(formData);
+  }, [formData]);
 
-  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  const handleChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(Number(e.target.value));
-  };
-
-  const handleChangePrice = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(e.target.value));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedItem = { ...formData };
+    if (e.target.name === "name") {
+      updatedItem[e.target.name] = e.target.value;
+    } else if (e.target.name === "price") {
+      updatedItem[e.target.name] = Number(e.target.value);
+    } else if (e.target.name === "quantity") {
+      updatedItem[e.target.name] = Number(e.target.value);
+    }
+    setFormData(updatedItem);
   };
 
   return (
     <div className={classes.container}>
-      <input type="text" value={name} onChange={handleChangeName} />
-      <input type="number" value={quantity} onChange={handleChangeQuantity} />
-      <input type="number" value={price} onChange={handleChangePrice} />
-      <input type="text" disabled={true} value={quantity * price} />
+      <input
+        type="text"
+        value={formData.name}
+        onChange={handleChange}
+        name="name"
+      />
+      <input
+        type="number"
+        value={formData.quantity}
+        onChange={handleChange}
+        name="quantity"
+      />
+      <input
+        type="number"
+        value={formData.price}
+        onChange={handleChange}
+        name="price"
+      />
+      <input
+        type="text"
+        disabled={true}
+        value={formData.price * formData.quantity}
+      />
       <button
         onClick={() => {
           removeItem(data.id);

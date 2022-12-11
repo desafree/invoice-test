@@ -5,16 +5,30 @@ import ThemeContextProvider from "./context/ThemeContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Invoices from "./pages/Invoices/Invoices";
 import Invoice from "./pages/Invoice/Invoice";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
     <ThemeContextProvider>
       <QueryProvider>
-        {/*        fix query client*/}
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Invoices></Invoices>}></Route>
-            <Route path="/:id" element={<Invoice></Invoice>}></Route>
+            <Route
+              path="/"
+              element={
+                <ErrorBoundary>
+                  <Invoices></Invoices>
+                </ErrorBoundary>
+              }
+            ></Route>
+            <Route
+              path="/:id"
+              element={
+                <ErrorBoundary>
+                  <Invoice></Invoice>
+                </ErrorBoundary>
+              }
+            ></Route>
           </Routes>
         </BrowserRouter>
       </QueryProvider>

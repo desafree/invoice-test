@@ -6,18 +6,19 @@ async function deleteInvoice(id: string) {
     method: "DELETE",
   });
   if (!res.ok) {
-    throw new Error("Somenthing went wrong");
+    throw new Error("Something went wrong");
   }
 
   const data = await res.json();
   return data;
 }
 
-const useDeleteInvoice = () => {
+const useDeleteInvoice = (id: string) => {
   const queryClient = useQueryClient();
 
   return useMutation(deleteInvoice, {
     onSuccess: () => {
+      queryClient.removeQueries(queryKeyFactory.detail(id as string));
       queryClient.invalidateQueries(queryKeyFactory.all);
     },
   });

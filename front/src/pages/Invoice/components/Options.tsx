@@ -13,13 +13,16 @@ const Options = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data, isError } = useInvoice(id as string);
-  const deleteInvoice = useDeleteInvoice();
+  const deleteInvoice = useDeleteInvoice(id as string);
   const updateInvoice = useUpdateInvoice();
   const [active, setActive] = useState(false);
 
   const handleDeleteButtonClick = () => {
-    deleteInvoice.mutate(id as string);
-    navigate("/");
+    deleteInvoice.mutate(id as string, {
+      onSuccess: () => {
+        navigate("/");
+      },
+    });
   };
 
   const handlePaidButtonClick = () => {

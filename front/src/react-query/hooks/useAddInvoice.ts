@@ -11,7 +11,7 @@ async function postInvoice(newInvoice: InvoiceType) {
     },
   });
   if (!res.ok) {
-    throw new Error("Somenthing went wrong");
+    throw new Error("Something went wrong");
   }
 
   const data = await res.json();
@@ -19,11 +19,11 @@ async function postInvoice(newInvoice: InvoiceType) {
 }
 
 const useAddInvoice = () => {
-  const queryCLient = useQueryClient();
+  const queryClient = useQueryClient();
 
   return useMutation(postInvoice, {
     onSuccess: () => {
-      queryCLient.invalidateQueries(queryKeyFactory.all);
+      queryClient.invalidateQueries(queryKeyFactory.lists());
     },
   });
 };

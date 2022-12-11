@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import classes from "./Total.module.css";
 import formatNumber from "../../../utils/formatNumber";
 
@@ -10,7 +10,7 @@ const Total: FC<Props> = ({ total }) => {
   return (
     <div className={classes.container}>
       <h4>Amount Due</h4>
-      <h2>£ {formatNumber(total)}</h2>
+      <h2>£ {useMemo(() => formatNumber(total), [total])}</h2>
     </div>
   );
 };
