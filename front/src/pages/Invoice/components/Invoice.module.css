@@ -4,5 +4,11 @@
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
   border-radius: 8px;
 }
+.container.dark {
+  background: #1E2139;
+}
+.container.dark h3, .container.dark h5, .container.dark p {
+  color: white;
+}
 
 /*# sourceMappingURL=Invoice.module.css.map */

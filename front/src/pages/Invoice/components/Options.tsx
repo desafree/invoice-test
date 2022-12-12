@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Options.module.css";
 import StatusButton from "../../Invoices/components/StatusButton";
 import useInvoice from "../../../react-query/hooks/useInvoice";
@@ -8,22 +8,16 @@ import useDeleteInvoice from "../../../react-query/hooks/useDeleteInvoice";
 import useUpdateInvoice from "../../../react-query/hooks/useUpdateInvoice";
 import { createPortal } from "react-dom";
 import InvoiceForm from "./InvoiceForm";
+import themeContext from "../../../context/themeContext";
+import DeletePopUp from "./DeletePopUp";
 
 const Options = () => {
-  const navigate = useNavigate();
+  const { darkMode } = useContext(themeContext);
   const { id } = useParams();
   const { data, isError } = useInvoice(id as string);
-  const deleteInvoice = useDeleteInvoice(id as string);
   const updateInvoice = useUpdateInvoice();
   const [active, setActive] = useState(false);
-
-  const handleDeleteButtonClick = () => {
-    deleteInvoice.mutate(id as string, {
-      onSuccess: () => {
-        navigate("/");
-      },
-    });
-  };
+  const [popUp, setPopup] = useState(false);
 
   const handlePaidButtonClick = () => {
     if (data && id) {
@@ -35,17 +29,28 @@ const Options = () => {
     setActive((prevState) => !prevState);
   };
 
+  const handleClickDelete = () => {
+    setPopup((prevState) => !prevState);
+  };
+
   if (data) {
     return (
-      <div className={classes.container}>
+      <div
+        className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}
+      >
         <h5>Status</h5>
         <StatusButton status={data.status as Filter}></StatusButton>
         <button onClick={handleClick}>Edit</button>
-        <button onClick={handleDeleteButtonClick}>Delete</button>
+        <button onClick={handleClickDelete}>Delete</button>
         <button onClick={handlePaidButtonClick}>Mark as Paid</button>
         {active &&
           createPortal(
             <InvoiceForm close={handleClick}></InvoiceForm>,
+            document.getElementById("pop-up")!
+          )}
+        {popUp &&
+          createPortal(
+            <DeletePopUp close={handleClickDelete}></DeletePopUp>,
             document.getElementById("pop-up")!
           )}
       </div>

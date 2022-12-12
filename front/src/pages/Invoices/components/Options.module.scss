@@ -3,6 +3,22 @@
   align-items: center;
   margin-bottom: 65px;
 
+  &.dark {
+    .title {
+      h2 {
+        color: #fff;
+      }
+
+      p {
+        color: #dfe3fa;
+      }
+    }
+
+    select{
+      color: gray !important;
+    }
+  }
+
   .title {
     margin-right: auto;
     h2 {
@@ -25,12 +41,4 @@
   }
 }
 
-/*
-    <div className={classes.container}>
-      <div className={classes.title}>
-        <h2>Invoices</h2>
-        <p>There are 7 total invoices</p>
-      </div>
-      <Filter></Filter>
-      <AddInvoice></AddInvoice>
-    </div>    */
+

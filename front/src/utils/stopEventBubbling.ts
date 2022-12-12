@@ -1,5 +1,7 @@
 const stopEventBubbling = (
-  e: React.MouseEvent<HTMLFormElement, MouseEvent>
+  e:
+    | React.MouseEvent<HTMLFormElement, MouseEvent>
+    | React.MouseEvent<HTMLDivElement, MouseEvent>
 ) => {
   e.stopPropagation();
 };

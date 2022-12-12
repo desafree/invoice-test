@@ -3,6 +3,15 @@
   align-items: center;
   margin-bottom: 65px;
 }
+.container.dark .title h2 {
+  color: #fff;
+}
+.container.dark .title p {
+  color: #dfe3fa;
+}
+.container.dark select {
+  color: gray !important;
+}
 .container .title {
   margin-right: auto;
 }
@@ -22,15 +31,5 @@
   letter-spacing: -0.25px;
   text-align: left;
 }
-
-/*
-    <div className={classes.container}>
-      <div className={classes.title}>
-        <h2>Invoices</h2>
-        <p>There are 7 total invoices</p>
-      </div>
-      <Filter></Filter>
-      <AddInvoice></AddInvoice>
-    </div>    */
 
 /*# sourceMappingURL=Options.module.css.map */

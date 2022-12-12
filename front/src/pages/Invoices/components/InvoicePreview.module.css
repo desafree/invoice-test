@@ -8,6 +8,9 @@
   align-items: center;
   padding: 24px 32px;
 }
+.container.dark {
+  background: #1e2139;
+}
 .container > * {
   flex: 1 1 0;
   width: 0;

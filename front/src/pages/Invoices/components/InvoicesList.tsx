@@ -1,21 +1,24 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import classes from "./InvoicesList.module.css";
 import InvoicePreview from "./InvoicePreview";
 import Filter from "../../../typescript/types/Filter";
 import useInvoicesFiltered from "../../../react-query/hooks/useInvoiceFiltered";
+import themeContext from "../../../context/themeContext";
+import NoInvoice from "./NoInvoice";
 
 interface Props {
   activeFilter: Filter;
 }
 
 const InvoicesList: FC<Props> = ({ activeFilter }) => {
+  const { darkMode } = useContext(themeContext);
   const { data, isError } = useInvoicesFiltered(activeFilter);
 
   if (data) {
     return (
-      <ul className={classes.container}>
+      <ul className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}>
         {data.length === 0 ? (
-          <p>No invoices...</p>
+          <NoInvoice></NoInvoice>
         ) : (
           data.map((invoice) => {
             return (

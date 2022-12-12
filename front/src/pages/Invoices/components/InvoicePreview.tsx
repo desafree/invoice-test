@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import classes from "./InvoicePreview.module.css";
 import StatusButton from "./StatusButton";
 import Invoice from "../../../typescript/interfaces/Invoice";
@@ -7,12 +7,14 @@ import formatNumber from "../../../utils/formatNumber";
 import Filter from "../../../typescript/types/Filter";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
+import themeContext from "../../../context/themeContext";
 
 interface Props {
   data: Invoice;
 }
 
 const InvoicePreview: FC<Props> = ({ data }) => {
+  const { darkMode } = useContext(themeContext);
   const formattedTotal = useMemo(() => formatNumber(data.total), [data.total]);
   const formattedDate = useMemo(
     () => formatDate(data.paymentDue),
@@ -20,7 +22,7 @@ const InvoicePreview: FC<Props> = ({ data }) => {
   );
 
   return (
-    <li className={classes.container}>
+    <li className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}>
       <h4>
         <span>#</span>
         {data.id}

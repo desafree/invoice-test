@@ -3,5 +3,8 @@
   flex-direction: column;
   gap: 16px;
 }
+.container.dark h4, .container.dark h5, .container.dark h3, .container.dark a {
+  color: white !important;
+}
 
 /*# sourceMappingURL=InvoicesList.module.css.map */

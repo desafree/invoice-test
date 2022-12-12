@@ -2,4 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  &.dark{
+    h4,h5,h3,a{
+      color: white !important;
+    }
+  }
 }

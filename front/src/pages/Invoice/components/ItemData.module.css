@@ -3,7 +3,7 @@
   display: flex;
 }
 .container h4 {
-  color: #7e88c3;
+  color: #7e88c3 !important;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
@@ -11,7 +11,7 @@
   text-align: left;
 }
 .container h3 {
-  color: #0c0e16;
+  color: #0c0e16 !important;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;

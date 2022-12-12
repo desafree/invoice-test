@@ -7,6 +7,9 @@
   border-radius: 8px;
   padding: 20px 32px;
 }
+.container.dark {
+  background: #1e2139;
+}
 .container h5 {
   color: #858bb2;
   font-size: 12px;
@@ -35,7 +38,7 @@
   border: none;
 }
 .container > *:nth-child(4) {
-  background: #EC5757;
+  background: #ec5757;
   border-radius: 24px;
   color: white;
   font-size: 12px;
@@ -47,7 +50,7 @@
   border: none;
 }
 .container > *:nth-child(5) {
-  background: #7C5DFA;
+  background: #7c5dfa;
   border-radius: 24px;
   color: white;
   font-size: 12px;

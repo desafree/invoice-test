@@ -13,5 +13,8 @@
   cursor: pointer;
   border: none;
 }
+.container.dark {
+  color: white;
+}
 
 /*# sourceMappingURL=Back.module.css.map */

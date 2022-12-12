@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
-import queryKeyFactory from "../query-key-factory";
 import InvoiceType from "../../typescript/interfaces/Invoice";
+import invoicesKeys from "../query-key-factory";
 
 async function postInvoice(newInvoice: InvoiceType) {
   const res = await fetch("http://localhost:3001/invoices", {
@@ -22,8 +22,11 @@ const useAddInvoice = () => {
   const queryClient = useQueryClient();
 
   return useMutation(postInvoice, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(queryKeyFactory.lists());
+    onSuccess: (newInvoice) => {
+      const data = queryClient.getQueryData(invoicesKeys.all);
+      queryClient.setQueryData(invoicesKeys.all, () => {
+        return [...(data as InvoiceType[]), newInvoice];
+      });
     },
   });
 };

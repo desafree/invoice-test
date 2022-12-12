@@ -76,8 +76,8 @@ app.post("/invoices", async (req, res) => {
 app.delete("/invoices/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    await InvoiceModel.deleteOne({ id: id });
-    res.send({ message: "deleted successfully" });
+    const invoice = await InvoiceModel.deleteOne({ id: id });
+    res.send({ message: "deleted successfully", id: id });
   } catch (error) {
     res.status(404).send(err);
   }
