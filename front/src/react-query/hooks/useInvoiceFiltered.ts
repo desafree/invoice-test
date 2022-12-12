@@ -12,7 +12,6 @@ async function getInvoicesFiltered() {
 }
 
 const useInvoicesFiltered = (filter: string) => {
-  /*  cosi mi refetcha ad ogni cambio di filter, ma non mi conviene utilizzare all e utilizzare il filter solo per cambiare nel select??*/
   return useQuery(invoicesKeys.all, getInvoicesFiltered, {
     select: (data) => {
       return data.filter((invoice) => {

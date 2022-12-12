@@ -3,6 +3,7 @@ import classes from "./Content.module.css";
 import Options from "./Options";
 import InvoicesList from "./InvoicesList";
 import Filter from "../../../typescript/types/Filter";
+import ErrorBoundary from "../../../components/ErrorBoundary";
 
 const Content = () => {
   const [activeFilter, setActiveFilter] = useState<Filter>("default");
@@ -12,8 +13,12 @@ const Content = () => {
 
   return (
     <main className={classes.container}>
-      <Options handleFilter={handleFilter} filter={activeFilter}></Options>
-      <InvoicesList activeFilter={activeFilter}></InvoicesList>
+      <ErrorBoundary>
+        <Options handleFilter={handleFilter} filter={activeFilter}></Options>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <InvoicesList activeFilter={activeFilter}></InvoicesList>
+      </ErrorBoundary>
     </main>
   );
 };

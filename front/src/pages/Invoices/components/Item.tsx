@@ -23,11 +23,13 @@ const Item: FC<Props> = ({ removeItem, data, updateItems }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updatedItem = { ...formData };
     if (e.target.name === "name") {
-      updatedItem[e.target.name] = e.target.value;
+      updatedItem[e.target.name] = e.target.value || "";
     } else if (e.target.name === "price") {
-      updatedItem[e.target.name] = Number(e.target.value);
+      updatedItem[e.target.name] =
+        Number(e.target.value) > 0 ? Number(e.target.value) : 0;
     } else if (e.target.name === "quantity") {
-      updatedItem[e.target.name] = Number(e.target.value);
+      updatedItem[e.target.name] =
+        Number(e.target.value) > 0 ? Number(e.target.value) : 0;
     }
     setFormData(updatedItem);
   };

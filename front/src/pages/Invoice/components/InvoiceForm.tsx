@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import classes from "./InvoiceForm.module.css";
 import useUpdateInvoice from "../../../react-query/hooks/useUpdateInvoice";
 import Item from "../../../typescript/interfaces/Item";
@@ -13,12 +13,14 @@ import FormOptions from "../../Invoices/components/FormOptions";
 import { useParams } from "react-router-dom";
 import useInvoice from "../../../react-query/hooks/useInvoice";
 import defineInvoiceDataFromFormInputs from "../../../utils/defineInvoiceDataFromFormInputs";
+import themeContext from "../../../context/themeContext";
 
 interface Props {
   close: () => void;
 }
 
 const InvoiceForm: FC<Props> = ({ close }) => {
+  const { darkMode } = useContext(themeContext);
   const { id } = useParams();
   const { data } = useInvoice(id as string);
   const [items, setItems] = useState<Item[]>(() => {
@@ -49,7 +51,10 @@ const InvoiceForm: FC<Props> = ({ close }) => {
   };
 
   return (
-    <div className={classes.container} onClick={close}>
+    <div
+      className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}
+      onClick={close}
+    >
       <form onClick={stopEventBubbling} onSubmit={handleSubmit(onSubmit)}>
         <h3>Edit Invoice</h3>
         <FormData register={register} errors={errors}></FormData>

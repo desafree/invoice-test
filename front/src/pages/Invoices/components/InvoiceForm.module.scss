@@ -5,6 +5,23 @@
   right: 0;
   background: rgba(0, 0, 0, 0.2);
   min-height: 100vh;
+  &.dark{
+    form {
+
+      background: #141625;
+      input, select{
+        background: #252945 !important;
+        border: 1px solid #252945;
+        border-radius: 4px;
+        color: white !important;
+      }
+
+      h3 {
+        color: white;
+
+      }
+    }
+  }
   form {
     padding: 56px 43px;
     background: #ffffff;

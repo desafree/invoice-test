@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
+import classes from "./ErrorBoundary.module.css";
 
 interface Props {
   children?: ReactNode;
@@ -23,7 +24,11 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return <h1>Sorry.. there was an error</h1>;
+      return (
+        <div className={classes.container}>
+          <h1>Sorry.. there was an error</h1>
+        </div>
+      );
     }
 
     return this.props.children;
