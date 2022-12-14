@@ -1,6 +1,6 @@
 import React, { FC, useContext } from "react";
 import themeContext from "../../../context/themeContext";
-import classes from "./DeletePopUp.module.css";
+import classes from "./DeletePopUp.module.scss";
 import useDeleteInvoice from "../../../react-query/hooks/useDeleteInvoice";
 import { useNavigate, useParams } from "react-router-dom";
 import stopEventBubbling from "../../../utils/stopEventBubbling";

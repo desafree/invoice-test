@@ -1,18 +1,9 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import invoicesKeys from "../query-key-factory";
-import Invoice from "../../typescript/interfaces/Invoice";
-
-async function getInvoicesFiltered() {
-  const res = await fetch("http://localhost:3001/invoices");
-  if (!res.ok) {
-    throw new Error("something went wrong");
-  }
-  const data: Invoice[] = await res.json();
-  return data;
-}
+import getInvoices from "../../utils/api/getInvoices";
 
 const useInvoicesFiltered = (filter: string) => {
-  return useQuery(invoicesKeys.all, getInvoicesFiltered, {
+  return useQuery(invoicesKeys.all, getInvoices, {
     select: (data) => {
       return data.filter((invoice) => {
         if (filter === "default") return true;

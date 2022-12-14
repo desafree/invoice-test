@@ -1,4 +1,5 @@
 import Item from "./Item";
+import InvoiceStatus from "../types/Filter";
 
 interface Invoice {
   senderAddress: {
@@ -20,7 +21,7 @@ interface Invoice {
   paymentTerms: number;
   clientName: string;
   clientEmail: string;
-  status: string;
+  status: InvoiceStatus;
   items: Item[];
   total: number;
 }

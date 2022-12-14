@@ -1,5 +1,5 @@
 import React, { FC, useMemo } from "react";
-import classes from "./InvoiceData.module.css";
+import classes from "./InvoiceData.module.scss";
 import Invoice from "../../../typescript/interfaces/Invoice";
 import formatDate from "../../../utils/formatDate";
 

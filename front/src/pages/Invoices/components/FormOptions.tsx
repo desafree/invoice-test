@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import classes from "./FormOptions.module.css";
+import classes from "./FormOptions.module.scss";
 import { UseFormReset, FieldValues } from "react-hook-form";
 
 interface Props {

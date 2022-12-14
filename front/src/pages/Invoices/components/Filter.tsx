@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import classes from "./Filter.module.css";
+import classes from "./Filter.module.scss";
 import FilterType from "../../../typescript/types/Filter";
 
 interface Props {

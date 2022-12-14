@@ -1,8 +1,8 @@
 import Invoice from "../typescript/interfaces/Invoice";
 import generateKey from "./generateKey";
-import Item from "../typescript/interfaces/Item";
+import FormData from "../typescript/interfaces/FormData";
 
-const defineInvoiceDataFromFormInputs = (data: any, items: Item[]) => {
+const defineInvoiceDataFromFormInputs = (data: FormData) => {
   const invoice: Invoice = {
     senderAddress: {
       street: data["street-from"],
@@ -24,9 +24,10 @@ const defineInvoiceDataFromFormInputs = (data: any, items: Item[]) => {
     clientName: data.name,
     clientEmail: data.email,
     status: data.status,
-    items: items,
-    total: items.reduce((total, curr) => {
-      return total + curr.quantity * curr.price;
+    items: data.cart,
+    total: data.cart.reduce((acc, curr) => {
+      console.log(curr, acc);
+      return acc + curr.price * curr.quantity;
     }, 0),
   };
 

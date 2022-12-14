@@ -1,17 +1,6 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import queryKeyFactory from "../query-key-factory";
-
-async function deleteInvoice(id: string) {
-  const res = await fetch(`http://localhost:3001/invoices/${id}`, {
-    method: "DELETE",
-  });
-  if (!res.ok) {
-    throw new Error("Something went wrong");
-  }
-
-  const data = await res.json();
-  return data;
-}
+import deleteInvoice from "../../utils/api/deleteInvoice";
 
 const useDeleteInvoice = (id: string) => {
   const queryClient = useQueryClient();

@@ -1,3 +1,3 @@
-type Filter = "paid" | "draft" | "pending" | "default";
+type InvoiceStatus = "paid" | "draft" | "pending" | "default";
 
-export default Filter;
+export default InvoiceStatus;

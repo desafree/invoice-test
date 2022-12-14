@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import classes from "./ItemData.module.css";
+import classes from "./ItemData.module.scss";
 import item from "../../../typescript/interfaces/Item";
 import formatNumber from "../../../utils/formatNumber";
 

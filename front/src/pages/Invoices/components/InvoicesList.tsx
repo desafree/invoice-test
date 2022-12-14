@@ -1,10 +1,10 @@
 import React, { FC, useContext } from "react";
-import classes from "./InvoicesList.module.css";
-import InvoicePreview from "./InvoicePreview";
+import classes from "./InvoicesList.module.scss";
+import InvoicePreview from "./InvoicePreview/InvoicePreview";
 import Filter from "../../../typescript/types/Filter";
 import useInvoicesFiltered from "../../../react-query/hooks/useInvoiceFiltered";
 import themeContext from "../../../context/themeContext";
-import NoInvoice from "./NoInvoice";
+import NoInvoice from "./NoInvoice/NoInvoice";
 
 interface Props {
   activeFilter: Filter;
