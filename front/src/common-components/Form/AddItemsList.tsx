@@ -1,16 +1,22 @@
 import React, { FC } from "react";
 import classes from "./AddItemsList.module.scss";
 import ItemForm from "./ItemForm";
-import { Control, useFieldArray, UseFormRegister } from "react-hook-form";
+import {
+  Control,
+  FieldErrors,
+  useFieldArray,
+  UseFormRegister,
+} from "react-hook-form";
 import FormData from "../../typescript/interfaces/FormData";
 import createEmptyItem from "../../utils/createEmptyItem";
 
 interface Props {
   control: Control<FormData, any>;
   register: UseFormRegister<FormData>;
+  errors: FieldErrors<FormData>;
 }
 
-const AddItemsList: FC<Props> = ({ control, register }) => {
+const AddItemsList: FC<Props> = ({ control, register, errors }) => {
   const { fields, append, remove } = useFieldArray({
     name: "cart",
     control,
@@ -43,6 +49,7 @@ const AddItemsList: FC<Props> = ({ control, register }) => {
           );
         })}
       </ul>
+
       <button
         className={classes["btn-add"]}
         type="button"

@@ -1,13 +1,13 @@
 import React, { FC } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import FormData from "../typescript/interfaces/FormData";
 import classes from "./Input.module.scss";
-import { FieldPath, FieldErrorsImpl } from "react-hook-form";
+import FieldName from "../typescript/types/FieldNames";
 
 interface Props {
-  name: FieldPath<FormData>;
+  name: FieldName;
   register: UseFormRegister<FormData>;
-  errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
+  errors: FieldErrors<FormData>;
   type: "text" | "date";
   defaultData?: string;
 }
@@ -17,9 +17,7 @@ const Input: FC<Props> = ({ name, register, errors, type, defaultData }) => {
     <div className={classes.container}>
       <label htmlFor={name}>{name}</label>
       <input {...register(name)} type={type} defaultValue={defaultData} />
-      {errors[name]?.message && (
-        <p className={classes.error}>{errors[name]!.message as string}</p>
-      )}
+      {errors[name] && <p className={classes.error}>{errors[name]!.message}</p>}
     </div>
   );
 };

@@ -1,14 +1,15 @@
 import React, { FC } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 import FormData from "../typescript/interfaces/FormData";
 import classes from "./Select.module.scss";
 import { FieldPath, FieldErrorsImpl } from "react-hook-form";
+import FieldName from "../typescript/types/FieldNames";
 
 interface Props {
-  name: FieldPath<FormData>;
+  name: FieldName;
   values: (string | number)[];
   register: UseFormRegister<FormData>;
-  errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
+  errors: FieldErrors<FormData>;
   defaultData?: string;
 }
 
@@ -25,9 +26,7 @@ const Select: FC<Props> = ({ name, register, errors, values, defaultData }) => {
           );
         })}
       </select>
-      {errors["terms"]?.message && (
-        <p className={classes.error}>{errors[name]!.message as string}</p>
-      )}
+      {errors[name] && <p className={classes.error}>{errors[name]!.message}</p>}
     </div>
   );
 };

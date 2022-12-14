@@ -37,7 +37,11 @@ const AddInvoiceForm: FC<Props> = ({ close, defaultData, onSubmit }) => {
       <form onClick={stopEventBubbling} onSubmit={handleSubmit(onSubmit)}>
         <h3>{defaultData ? "Edit Invoice" : "Add Invoice"}</h3>
         <AddFormData register={register} errors={errors}></AddFormData>
-        <AddItemsList control={control} register={register}></AddItemsList>
+        <AddItemsList
+          control={control}
+          register={register}
+          errors={errors}
+        ></AddItemsList>
         <FormOptions reset={reset}></FormOptions>
       </form>
     </div>

@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import classes from "./AddFormData.module.scss";
 import { UseFormRegister } from "react-hook-form";
-import { FieldErrorsImpl } from "react-hook-form";
+import { FieldErrors } from "react-hook-form";
 import FormData from "../../typescript/interfaces/FormData";
 import Input from "../Input";
 import Select from "../Select";
 
 interface Props {
   register: UseFormRegister<FormData>;
-  errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
+  errors: FieldErrors<FormData>;
 }
 
 const AddFormData: FC<Props> = ({ register, errors }) => {
