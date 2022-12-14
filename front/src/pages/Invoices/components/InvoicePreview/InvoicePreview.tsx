@@ -9,21 +9,19 @@ import { Link } from "react-router-dom";
 import { useMemo } from "react";
 import themeContext from "../../../../context/themeContext";
 import arrowIcon from "./icon-arrow-right.svg";
+import useTheme from "../../../../hooks/useTheme";
 
 interface Props {
   data: Invoice;
 }
 
 const InvoicePreview: FC<Props> = ({ data }) => {
-  const { darkMode } = useContext(themeContext);
-  const formattedTotal = useMemo(() => formatNumber(data.total), [data.total]);
-  const formattedDate = useMemo(
-    () => formatDate(data.paymentDue),
-    [data.paymentDue]
-  );
+  const theme = useTheme();
+  const formattedTotal = formatNumber(data.total);
+  const formattedDate = formatDate(data.paymentDue);
 
   return (
-    <li className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}>
+    <li className={`${classes.container} ${classes[theme]}`}>
       <h4>
         <span>#</span>
         {data.id}

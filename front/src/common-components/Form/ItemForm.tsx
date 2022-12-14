@@ -1,13 +1,13 @@
-import React, { FC, useEffect } from "react";
-import classes from "./Item/Item.module.scss";
-import deleteIcon from "./Item/icon-delete.svg";
+import React, { FC } from "react";
+import classes from "../../pages/Invoices/components/Item/Item.module.scss";
+import deleteIcon from "../../pages/Invoices/components/Item/icon-delete.svg";
 import {
   UseFormRegister,
   UseFieldArrayRemove,
   Control,
   useWatch,
 } from "react-hook-form";
-import FormData from "../../../typescript/interfaces/FormData";
+import FormData from "../../typescript/interfaces/FormData";
 
 interface Props {
   index: number;
@@ -17,7 +17,16 @@ interface Props {
 }
 
 const ItemForm: FC<Props> = ({ index, register, remove, control }) => {
-  const items = useWatch({ control, name: "cart" });
+  const quantity = useWatch({
+    control,
+    name: `cart.${index}.quantity`,
+    defaultValue: 0,
+  });
+  const price = useWatch({
+    control,
+    name: `cart.${index}.price`,
+    defaultValue: 0,
+  });
 
   return (
     <li>
@@ -41,11 +50,7 @@ const ItemForm: FC<Props> = ({ index, register, remove, control }) => {
           })}
         />
 
-        <input
-          type="number"
-          disabled={true}
-          value={items[index].price * items[index].quantity}
-        />
+        <input type="number" disabled={true} value={quantity * price} />
         <button
           onClick={() => {
             remove(index);

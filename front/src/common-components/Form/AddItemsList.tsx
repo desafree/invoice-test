@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import classes from "./AddItemsList.module.scss";
 import ItemForm from "./ItemForm";
 import { Control, useFieldArray, UseFormRegister } from "react-hook-form";
-import FormData from "../../../typescript/interfaces/FormData";
-import createEmptyItem from "../../../utils/createEmptyItem";
+import FormData from "../../typescript/interfaces/FormData";
+import createEmptyItem from "../../utils/createEmptyItem";
 
 interface Props {
   control: Control<FormData, any>;

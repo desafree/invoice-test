@@ -9,13 +9,14 @@ interface Props {
   register: UseFormRegister<FormData>;
   errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
   type: "text" | "date";
+  defaultData?: string;
 }
 
-const Input: FC<Props> = ({ name, register, errors, type }) => {
+const Input: FC<Props> = ({ name, register, errors, type, defaultData }) => {
   return (
     <div className={classes.container}>
       <label htmlFor={name}>{name}</label>
-      <input {...register(name)} type={type} />
+      <input {...register(name)} type={type} defaultValue={defaultData} />
       {errors[name]?.message && (
         <p className={classes.error}>{errors[name]!.message as string}</p>
       )}

@@ -1,3 +1,5 @@
+import DeletedOutputFromApi from "../../typescript/interfaces/DeletedOutputFromApi";
+
 async function deleteInvoice(id: string) {
   const res = await fetch(`http://localhost:3001/invoices/${id}`, {
     method: "DELETE",
@@ -6,7 +8,7 @@ async function deleteInvoice(id: string) {
     throw new Error("Something went wrong");
   }
 
-  const data = await res.json();
+  const data: DeletedOutputFromApi = await res.json();
   return data;
 }
 

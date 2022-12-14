@@ -12,7 +12,7 @@ async function updateInvoice(obj: { id: string; invoice: InvoiceType }) {
     throw new Error("Something went wrong");
   }
 
-  const data = await res.json();
+  const data: InvoiceType = await res.json();
   return data;
 }
 

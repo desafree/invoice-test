@@ -5,7 +5,6 @@ import ThemeContextProvider from "./context/ThemeContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import InvoicesListPage from "./pages/Invoices/InvoicesListPage";
 import InvoicePage from "./pages/Invoice/InvoicePage";
-import ThemeContext from "./context/themeContext";
 
 function App() {
   return (

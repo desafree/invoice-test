@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import classes from "./AddInvoice.module.scss";
-import { createPortal } from "react-dom";
-import AddInvoiceForm from "../AddInvoiceForm";
+import useTrigger from "../../../../hooks/useTrigger";
 import plusIcon from "./icon-plus.svg";
+import FormAddLogic from "../FormAddLogic";
+import PopUpWrapper from "../../../../common-components/PopUpWrapper";
 
 const AddInvoice = () => {
-  const [active, setActive] = useState(false);
-  const handleClick = () => {
-    setActive((prevState) => !prevState);
-  };
+  const { trigger, handleTrigger } = useTrigger();
 
   useEffect(() => {
-    if (active) {
+    if (trigger) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "initial";
@@ -20,21 +18,21 @@ const AddInvoice = () => {
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [active]);
+  }, [trigger]);
 
   return (
     <>
-      <button className={classes.container} onClick={handleClick}>
+      <button className={classes.container} onClick={handleTrigger}>
         <span>
           <img src={plusIcon} alt="plus" />
         </span>
         New Invoice
       </button>
-      {active &&
-        createPortal(
-          <AddInvoiceForm close={handleClick}></AddInvoiceForm>,
-          document.getElementById("pop-up")!
-        )}
+      {trigger && (
+        <PopUpWrapper>
+          <FormAddLogic close={handleTrigger}></FormAddLogic>
+        </PopUpWrapper>
+      )}
     </>
   );
 };

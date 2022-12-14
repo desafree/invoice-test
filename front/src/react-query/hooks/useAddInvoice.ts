@@ -8,9 +8,12 @@ const useAddInvoice = () => {
 
   return useMutation(postInvoice, {
     onSuccess: (newInvoice) => {
-      queryClient.setQueryData<InvoiceType[]>(invoicesKeys.all, (data = []) => {
-        return [...data, newInvoice];
-      });
+      queryClient.setQueryData<InvoiceType[]>(
+        invoicesKeys.all,
+        (data: InvoiceType[] = []) => {
+          return [...data, newInvoice];
+        }
+      );
     },
   });
 };

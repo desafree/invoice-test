@@ -2,10 +2,9 @@ import React, { FC } from "react";
 import classes from "./AddFormData.module.scss";
 import { UseFormRegister } from "react-hook-form";
 import { FieldErrorsImpl } from "react-hook-form";
-import FormData from "../../../typescript/interfaces/FormData";
-import { Control } from "react-hook-form";
-import Input from "../../../common-components/Input";
-import Select from "../../../common-components/Select";
+import FormData from "../../typescript/interfaces/FormData";
+import Input from "../Input";
+import Select from "../Select";
 
 interface Props {
   register: UseFormRegister<FormData>;

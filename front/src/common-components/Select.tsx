@@ -9,13 +9,14 @@ interface Props {
   values: (string | number)[];
   register: UseFormRegister<FormData>;
   errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
+  defaultData?: string;
 }
 
-const Input: FC<Props> = ({ name, register, errors, values }) => {
+const Select: FC<Props> = ({ name, register, errors, values, defaultData }) => {
   return (
     <div className={classes.container}>
       <label htmlFor={name}>{name}</label>
-      <select id={name} {...register(name)}>
+      <select id={name} {...register(name)} defaultValue={defaultData}>
         {values.map((value) => {
           return (
             <option value={value} key={value}>
@@ -25,10 +26,10 @@ const Input: FC<Props> = ({ name, register, errors, values }) => {
         })}
       </select>
       {errors["terms"]?.message && (
-        <p className={classes.error}>{errors["terms"].message as string}</p>
+        <p className={classes.error}>{errors[name]!.message as string}</p>
       )}
     </div>
   );
 };
 
-export default Input;
+export default Select;

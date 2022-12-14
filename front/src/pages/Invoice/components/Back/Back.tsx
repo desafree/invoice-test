@@ -1,20 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import classes from "./Back.module.scss";
-import { useNavigate } from "react-router-dom";
-import themeContext from "../../../../context/themeContext";
 import BackIcon from "./icon-arrow-left.svg";
+import useTheme from "../../../../hooks/useTheme";
+import useGoHome from "../../../../hooks/useGoHome";
 
 const Back = () => {
-  const navigate = useNavigate();
-  const { darkMode } = useContext(themeContext);
-  const handleClick = () => {
-    navigate("/");
-  };
+  const goHome = useGoHome();
+  const theme = useTheme();
 
   return (
     <button
-      className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}
-      onClick={handleClick}
+      className={`${classes.container} ${classes[theme]}`}
+      onClick={goHome}
     >
       <span>
         <img src={BackIcon} alt="arrow left" />

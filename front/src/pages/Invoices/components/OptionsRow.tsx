@@ -1,10 +1,10 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import classes from "./OptionsRow.module.scss";
 import Filter from "./Filter";
 import AddInvoice from "./AddInvoice/AddInvoice";
 import FilterType from "../../../typescript/types/Filter";
 import useInvoicesFiltered from "../../../react-query/hooks/useInvoiceFiltered";
-import themeContext from "../../../context/themeContext";
+import useTheme from "../../../hooks/useTheme";
 
 interface Props {
   handleFilter: (newFilter: FilterType) => void;
@@ -12,11 +12,11 @@ interface Props {
 }
 
 const OptionsRow: FC<Props> = ({ handleFilter, filter }) => {
-  const { darkMode } = useContext(themeContext);
+  const theme = useTheme();
   const { data } = useInvoicesFiltered(filter);
 
   return (
-    <div className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}>
+    <div className={`${classes.container} ${classes[theme]}`}>
       <div className={classes.title}>
         <h2>Invoices</h2>
         <p>

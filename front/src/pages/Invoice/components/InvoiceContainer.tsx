@@ -5,18 +5,16 @@ import EditItemsList from "./EditItemsList";
 import TotalItems from "./TotalItems";
 import useInvoice from "../../../react-query/hooks/useInvoice";
 import { useParams } from "react-router-dom";
-import themeContext from "../../../context/themeContext";
+import useTheme from "../../../hooks/useTheme";
 
 const InvoiceContainer = () => {
   const { id } = useParams();
-  const { data, isError } = useInvoice(id as string);
-  const { darkMode } = useContext(themeContext);
+  const { data, isError } = useInvoice(id!);
+  const theme = useTheme();
 
   if (data) {
     return (
-      <div
-        className={`${classes.container} ${classes[darkMode ? "dark" : ""]}`}
-      >
+      <div className={`${classes.container} ${classes[theme]}`}>
         <InvoiceData data={data}></InvoiceData>
         <EditItemsList items={data.items}></EditItemsList>
         <TotalItems total={data.total}></TotalItems>
