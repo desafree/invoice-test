@@ -1,11 +1,24 @@
-import React from "react";
+import React, { FC } from "react";
+import { UseFormRegister } from "react-hook-form";
+import FormData from "../typescript/interfaces/FormData";
 import classes from "./Input.module.scss";
+import { FieldPath, FieldErrorsImpl } from "react-hook-form";
 
-const Input = () => {
+interface Props {
+  name: FieldPath<FormData>;
+  register: UseFormRegister<FormData>;
+  errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
+  type: "text" | "date";
+}
+
+const Input: FC<Props> = ({ name, register, errors, type }) => {
   return (
     <div className={classes.container}>
-      <label htmlFor="street-from">Street Address</label>
-      <input type="text" />
+      <label htmlFor={name}>{name}</label>
+      <input {...register(name)} type={type} />
+      {errors[name]?.message && (
+        <p className={classes.error}>{errors[name]!.message as string}</p>
+      )}
     </div>
   );
 };

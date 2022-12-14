@@ -12,8 +12,8 @@ interface FormData {
   "city-to": string;
   "postcode-to": string;
   "country-to": string;
-  "invoice-date": string;
-  terms: string;
+  "invoice-date": Date;
+  terms: number;
   description: string;
   cart: Item[];
   status: Filter;

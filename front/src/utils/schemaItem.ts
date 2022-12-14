@@ -5,7 +5,6 @@ const schemaItem = yup.object().shape({
   quantity: yup.number().min(1).required(),
   price: yup.number().min(1).required(),
   id: yup.string().required(),
-  total: yup.number().required(),
 });
 
 export default schemaItem;

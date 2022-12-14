@@ -1,9 +1,11 @@
 import React, { FC } from "react";
 import classes from "./FormOptions.module.scss";
-import { UseFormReset, FieldValues } from "react-hook-form";
+import { UseFormReset } from "react-hook-form";
+import FormData from "../../../typescript/interfaces/FormData";
+import createEmptyDataField from "../../../utils/createEmptyDataField";
 
 interface Props {
-  reset: UseFormReset<FieldValues>;
+  reset: UseFormReset<FormData>;
 }
 
 const FormOptions: FC<Props> = ({ reset }) => {
@@ -11,29 +13,13 @@ const FormOptions: FC<Props> = ({ reset }) => {
     <div className={classes.container}>
       <button
         onClick={() => {
-          reset({
-            status: "pending",
-            description: "",
-            terms: 7,
-            "invoice-date": new Date(),
-            "country-to": "",
-            "postcode-to": "",
-            "city-to": "",
-            "street-to": "",
-            email: "",
-            name: "",
-            "country-from": "",
-            "postcode-from": "",
-            "city-from": "",
-            "street-from": "",
-            data: "",
-          });
+          reset(createEmptyDataField());
         }}
         type="button"
       >
         Discard
       </button>
-      <button>Save & Send</button>
+      <button type="submit">Save & Send</button>
     </div>
   );
 };

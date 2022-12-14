@@ -2,36 +2,22 @@ import React, { FC, useEffect } from "react";
 import classes from "./Item/Item.module.scss";
 import deleteIcon from "./Item/icon-delete.svg";
 import {
-  FieldValues,
   UseFormRegister,
   UseFieldArrayRemove,
   Control,
-  UseFormGetValues,
-  FieldErrorsImpl,
+  useWatch,
 } from "react-hook-form";
-import ItemType from "../../../typescript/interfaces/Item";
+import FormData from "../../../typescript/interfaces/FormData";
 
 interface Props {
   index: number;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<FormData>;
   remove: UseFieldArrayRemove;
-  control: Control<FieldValues, any>;
-  getValues: UseFormGetValues<FieldValues>;
-  errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
-  watchCart: ItemType[];
+  control: Control<FormData, any>;
 }
 
-const ItemForm: FC<Props> = ({
-  index,
-  register,
-  remove,
-  getValues,
-  errors,
-  watchCart,
-}) => {
-  useEffect(() => {
-    console.log(watchCart[index]);
-  }, watchCart);
+const ItemForm: FC<Props> = ({ index, register, remove, control }) => {
+  const items = useWatch({ control, name: "cart" });
 
   return (
     <li>
@@ -58,11 +44,7 @@ const ItemForm: FC<Props> = ({
         <input
           type="number"
           disabled={true}
-          {...register(`cart.${index}.total`, {
-            valueAsNumber: true,
-            required: true,
-          })}
-          value={watchCart[index].price * watchCart[index].quantity}
+          value={items[index].price * items[index].quantity}
         />
         <button
           onClick={() => {

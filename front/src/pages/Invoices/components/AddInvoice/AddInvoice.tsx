@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./AddInvoice.module.scss";
 import { createPortal } from "react-dom";
 import AddInvoiceForm from "../AddInvoiceForm";
@@ -9,6 +9,18 @@ const AddInvoice = () => {
   const handleClick = () => {
     setActive((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (active) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [active]);
 
   return (
     <>

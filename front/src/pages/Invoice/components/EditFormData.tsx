@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import classes from "./EditFormData.module.scss";
-import { UseFormRegister, FieldValues } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { FieldErrorsImpl } from "react-hook-form";
 import useInvoice from "../../../react-query/hooks/useInvoice";
 import { useParams } from "react-router-dom";
 import formatDate from "../../../utils/formatDate";
+import FormData from "../../../typescript/interfaces/FormData";
 
 interface Props {
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<FormData>;
   errors: Partial<FieldErrorsImpl<{ [p: string]: any }>>;
 }
 

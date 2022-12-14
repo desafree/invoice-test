@@ -8,12 +8,12 @@ import schema from "../../../utils/schemaForm";
 import Invoice from "../../../typescript/interfaces/Invoice";
 import stopEventBubbling from "../../../utils/stopEventBubbling";
 import EditFormData from "./EditFormData";
-import AddItemsList from "../../Invoices/components/AddItemsList";
 import FormOptions from "../../Invoices/components/FormOptions";
 import { useParams } from "react-router-dom";
 import useInvoice from "../../../react-query/hooks/useInvoice";
 import defineInvoiceDataFromFormInputs from "../../../utils/defineInvoiceDataFromFormInputs";
 import themeContext from "../../../context/themeContext";
+import FormData from "../../../typescript/interfaces/FormData";
 
 interface Props {
   close: () => void;
@@ -32,7 +32,7 @@ const EditInvoiceForm: FC<Props> = ({ close }) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
