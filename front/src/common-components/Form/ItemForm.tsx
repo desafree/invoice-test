@@ -28,6 +28,8 @@ const ItemForm: FC<Props> = ({ index, register, remove, control }) => {
     defaultValue: 0,
   });
 
+  console.log(quantity, price);
+
   return (
     <li>
       <div className={classes.container}>

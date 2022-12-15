@@ -16,7 +16,7 @@ const DeletePopUp: FC<Props> = ({ close, id }) => {
   const deleteInvoice = useDeleteInvoice();
 
   const handleDeleteButtonClick = () => {
-    deleteInvoice.mutate(id as string, {
+    deleteInvoice.mutate(id, {
       onSuccess: goHome,
     });
   };

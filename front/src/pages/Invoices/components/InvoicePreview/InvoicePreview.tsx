@@ -29,7 +29,7 @@ const InvoicePreview: FC<Props> = ({ data }) => {
       <h5>{formattedDate}</h5>
       <h5>{data.clientName}</h5>
       <h3>£{formattedTotal}</h3>
-      <StatusButton status={data.status as Filter}></StatusButton>
+      <StatusButton status={data.status}></StatusButton>
       <Link to={`/${data.id}`}>
         <img src={arrowIcon} alt="arrow right" />
       </Link>

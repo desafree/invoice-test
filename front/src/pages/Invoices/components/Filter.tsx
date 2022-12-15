@@ -8,6 +8,7 @@ interface Props {
 
 const Filter: FC<Props> = ({ onChange }) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    /*    as antipattern!*/
     onChange(event.target.value as FilterType);
   };
 

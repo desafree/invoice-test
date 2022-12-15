@@ -13,12 +13,12 @@ interface Props {
 
 const FormAddLogic: FC<Props> = ({ close, id }) => {
   const updateInvoice = useUpdateInvoice();
-  const { data } = useInvoice(id as string);
+  const { data } = useInvoice(id);
 
   const onSubmit = (data: any) => {
     const invoice: Invoice = defineInvoiceDataFromFormInputs(data);
     updateInvoice.mutate(
-      { id: id as string, invoice: { ...invoice } },
+      { id: id, invoice: { ...invoice } },
       {
         onSuccess: () => {
           close();
