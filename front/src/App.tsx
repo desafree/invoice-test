@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import QueryProvider from "./react-query/QueryClient";
-import ThemeContextProvider from "./context/ThemeContextProvider";
+import QueryProvider from "./_shared/apis/react-query/QueryClient";
+import ThemeContextProvider from "./_shared/context/ThemeContext/ThemeContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import InvoicesListPage from "./pages/Invoices/InvoicesListPage";
-import InvoicePage from "./pages/Invoice/InvoicePage";
+import InvoicesListPage from "./invoice/views/InvoicesList/InvoicesListPage";
+import InvoicePage from "./invoice/views/InvoicePage/InvoicePage";
 
 function App() {
   return (
