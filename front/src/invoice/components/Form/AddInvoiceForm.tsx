@@ -3,7 +3,7 @@ import classes from "./AddInvoiceForm.module.scss";
 import AddFormData from "./AddFormData";
 import AddItemsList from "./AddItemsList";
 import stopEventBubbling from "../../../_shared/utils/stopEventBubbling";
-import { useForm, useFormContext, FormProvider } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import Invoice from "../../types/interfaces/Invoice";
 import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "../../utils/schemaForm";
@@ -12,7 +12,7 @@ import defineDefaultDataFromInvoice from "../../utils/defineDefaultDataFromInvoi
 import FormData from "../../types/interfaces/FormData";
 import useTheme from "../../../_shared/hooks/useTheme";
 import { DevTool } from "@hookform/devtools";
-import useFormCopy from "../../../_shared/form/useFormCopy";
+import useRegisteredForm from "../../../_shared/form/useFormCopy";
 
 interface Props {
   close: () => void;
@@ -27,6 +27,11 @@ const AddInvoiceForm: FC<Props> = ({ close, defaultData, onSubmit }) => {
     defaultValues: defineDefaultDataFromInvoice(defaultData),
     resolver: yupResolver(schema),
   });
+
+  /*  const methods = useRegisteredForm<FormData>(
+    schema,
+    defineDefaultDataFromInvoice(defaultData)
+  );*/
 
   const {
     control,

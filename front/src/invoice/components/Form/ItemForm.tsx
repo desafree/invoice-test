@@ -8,6 +8,7 @@ import {
   useWatch,
 } from "react-hook-form";
 import FormData from "../../types/interfaces/FormData";
+import useWatchCopy from "../../../_shared/form/useWatchCopy";
 
 interface Props {
   index: number;
@@ -17,18 +18,8 @@ interface Props {
 }
 
 const ItemForm: FC<Props> = ({ index, register, remove, control }) => {
-  const quantity = useWatch({
-    name: `cart.${index}.quantity`,
-  });
-  const price = useWatch({
-    name: `cart.${index}.price`,
-  });
-
-  const cart = useWatch({
-    name: `cart.${index}`,
-  });
-
-  console.log(quantity, price, cart);
+  const quantity = useWatchCopy(`cart.${index}.quantity`);
+  const price = useWatchCopy(`cart.${index}.price`);
 
   return (
     <li>

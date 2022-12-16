@@ -10,6 +10,7 @@ import {
 } from "react-hook-form";
 import FormData from "../../types/interfaces/FormData";
 import createEmptyItem from "../../utils/createEmptyItem";
+import useFieldArrayCopy from "../../../_shared/form/useFieldArrayCopy";
 
 interface Props {
   control: Control<FormData, any>;
@@ -18,13 +19,7 @@ interface Props {
 }
 
 const AddItemsList: FC<Props> = ({ control, register, errors }) => {
-  const { fields, append, remove } = useFieldArray({
-    name: "cart",
-    /*    shouldUnregister: true,*/
-    rules: {
-      minLength: 1,
-    },
-  });
+  const { fields, append, remove } = useFieldArrayCopy("cart");
 
   console.log("cart", useWatch({ name: "description" }));
 
