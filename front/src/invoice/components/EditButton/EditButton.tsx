@@ -13,7 +13,14 @@ const EditButton: FC<Props> = ({ id }) => {
 
   return (
     <>
-      <button onClick={handleTriggerForm}>Edit</button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleTriggerForm();
+        }}
+      >
+        Edit
+      </button>
       {triggerForm && (
         <PopUpWrapper>
           <FormEditLogic close={handleTriggerForm} id={id}></FormEditLogic>

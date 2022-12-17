@@ -7,7 +7,7 @@ import formatNumber from "../../../_shared/utils/formatNumber";
 import Filter from "../../types/types/Filter";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
-import themeContext from "../../../_shared/context/ThemeContext/themeContext";
+import themeContext from "../../../_shared/styles/theme/themeContext";
 import arrowIcon from "./icon-arrow-right.svg";
 import useTheme from "../../../_shared/hooks/useTheme";
 

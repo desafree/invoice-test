@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import invoicesKeys from "../../_shared/apis/react-query/query-key-factory";
+import invoicesKeys from "../request-management/query-key/query-key-invoice-factory";
 import getInvoices from "../apis/getInvoices";
 
 const useInvoicesFiltered = (filter: string) => {

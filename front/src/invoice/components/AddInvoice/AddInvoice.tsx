@@ -20,9 +20,17 @@ const AddInvoice = () => {
     };
   }, [trigger]);
 
+  console.log(trigger);
+
   return (
     <>
-      <button className={classes.container} onClick={handleTrigger}>
+      <button
+        className={classes.container}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleTrigger();
+        }}
+      >
         <span>
           <img src={plusIcon} alt="plus" />
         </span>

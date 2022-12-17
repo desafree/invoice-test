@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import themeContext from "../../../_shared/context/ThemeContext/themeContext";
+import themeContext from "../../../_shared/styles/theme/themeContext";
 import classes from "./NoInvoice.module.scss";
 import illustrationIcon from "./illustration-empty.svg";
 import useTheme from "../../../_shared/hooks/useTheme";

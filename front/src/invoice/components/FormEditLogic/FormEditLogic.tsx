@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Invoice from "../../types/interfaces/Invoice";
 import defineInvoiceDataFromFormInputs from "../../utils/defineInvoiceDataFromFormInputs";
-import AddInvoiceForm from "../Form/AddInvoiceForm";
+import AddInvoiceForm from "../AddInvoiceForm/AddInvoiceForm";
 import useUpdateInvoice from "../../hooks/useUpdateInvoice";
 import { useParams } from "react-router-dom";
 import useInvoice from "../../hooks/useInvoice";

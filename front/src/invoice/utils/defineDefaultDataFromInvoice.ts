@@ -1,6 +1,9 @@
 import Invoice from "../types/interfaces/Invoice";
+import InvoiceFormData from "../types/interfaces/FormData";
 
-const defineDefaultDataFromInvoice = (invoiceData: Invoice | undefined) => {
+function defineDefaultDataFromInvoice(
+  invoiceData: Invoice | undefined
+): InvoiceFormData | undefined {
   if (invoiceData) {
     const defaultFormData = {
       "street-from": invoiceData.senderAddress.street,
@@ -23,7 +26,7 @@ const defineDefaultDataFromInvoice = (invoiceData: Invoice | undefined) => {
     return defaultFormData;
   }
 
-  return {};
-};
+  return undefined;
+}
 
 export default defineDefaultDataFromInvoice;

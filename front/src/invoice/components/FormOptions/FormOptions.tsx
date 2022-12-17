@@ -1,14 +1,10 @@
-import React, { FC } from "react";
+import React from "react";
 import classes from "./FormOptions.module.scss";
-import { UseFormReset } from "react-hook-form";
-import FormData from "../../types/interfaces/FormData";
 import createEmptyDataField from "../../utils/createEmptyDataField";
+import { useFormContext } from "react-hook-form";
 
-interface Props {
-  reset: UseFormReset<FormData>;
-}
-
-const FormOptions: FC<Props> = ({ reset }) => {
+const FormOptions = () => {
+  const { reset } = useFormContext();
   return (
     <div className={classes.container}>
       <button

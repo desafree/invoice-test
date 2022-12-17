@@ -1,7 +1,8 @@
 import Item from "./Item";
 import Filter from "../types/Filter";
 
-interface FormData {
+interface InvoiceFormData {
+  status: Filter;
   "street-from": string;
   "city-from": string;
   "postcode-from": string;
@@ -16,7 +17,6 @@ interface FormData {
   terms: number;
   description: string;
   cart: Item[];
-  status: Filter;
 }
 
-export default FormData;
+export default InvoiceFormData;

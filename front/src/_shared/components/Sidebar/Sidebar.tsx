@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import classes from "./Sidebar.module.scss";
-import ThemeContext from "../../context/ThemeContext/themeContext";
+import ThemeContext from "../../styles/theme/themeContext";
 import moonIcon from "./icon-moon.svg";
 import logo from "./logo.svg";
 

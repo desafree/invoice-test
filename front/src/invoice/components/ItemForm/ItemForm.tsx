@@ -1,25 +1,21 @@
 import React, { FC } from "react";
 import classes from "../Item/Item.module.scss";
 import deleteIcon from "../Item/icon-delete.svg";
-import {
-  UseFormRegister,
-  UseFieldArrayRemove,
-  Control,
-  useWatch,
-} from "react-hook-form";
-import FormData from "../../types/interfaces/FormData";
-import useWatchCopy from "../../../_shared/form/useWatchCopy";
+import { UseFieldArrayRemove, useFormContext, useWatch } from "react-hook-form";
 
 interface Props {
   index: number;
-  register: UseFormRegister<FormData>;
   remove: UseFieldArrayRemove;
-  control: Control<FormData, any>;
 }
 
-const ItemForm: FC<Props> = ({ index, register, remove, control }) => {
-  const quantity = useWatchCopy(`cart.${index}.quantity`);
-  const price = useWatchCopy(`cart.${index}.price`);
+const ItemForm: FC<Props> = ({ index, remove }) => {
+  const { register, formState: errors } = useFormContext();
+  const quantity = useWatch({
+    name: `cart.${index}.quantity`,
+  });
+  const price = useWatch({
+    name: `cart.${index}.price`,
+  });
 
   return (
     <li>

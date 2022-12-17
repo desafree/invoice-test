@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import InvoiceType from "../types/interfaces/Invoice";
-import invoicesKeys from "../../_shared/apis/react-query/query-key-factory";
+import invoicesKeys from "../request-management/query-key/query-key-invoice-factory";
 import postInvoice from "../apis/postInvoice";
 
 const useAddInvoice = () => {

@@ -3,7 +3,7 @@ import FormData from "../../types/interfaces/FormData";
 import Invoice from "../../types/interfaces/Invoice";
 import defineInvoiceDataFromFormInputs from "../../utils/defineInvoiceDataFromFormInputs";
 import useAddInvoice from "../../hooks/useAddInvoice";
-import AddInvoiceForm from "../Form/AddInvoiceForm";
+import AddInvoiceForm from "../AddInvoiceForm/AddInvoiceForm";
 
 interface Props {
   close: () => void;
@@ -14,7 +14,6 @@ const FormAddLogic: FC<Props> = ({ close }) => {
 
   const onSubmit = (data: FormData) => {
     const invoice: Invoice = defineInvoiceDataFromFormInputs(data);
-    console.log(data, invoice);
     addInvoice.mutate(invoice, {
       onSuccess: () => {
         close();

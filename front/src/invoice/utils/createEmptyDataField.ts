@@ -1,7 +1,7 @@
-import FormDataType from "../types/interfaces/FormData";
+import FormData from "../types/interfaces/FormData";
 
 function createEmptyDataField() {
-  const formData: FormDataType = {
+  const formData: FormData = {
     status: "pending",
     description: "",
     terms: 7,

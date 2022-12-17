@@ -1,7 +1,9 @@
 import * as yup from "yup";
 import schemaItem from "./schemaItem";
+import InvoiceFormData from "../types/interfaces/FormData";
+import InvoiceStatus from "../types/types/Filter";
 
-const schema = yup.object().shape({
+const invoiceSchema: yup.SchemaOf<InvoiceFormData> = yup.object().shape({
   "street-from": yup.string().required(),
   "city-from": yup.string().required(),
   "postcode-from": yup.string().required(),
@@ -15,7 +17,10 @@ const schema = yup.object().shape({
   "invoice-date": yup.date().required(),
   terms: yup.number().required(),
   description: yup.string().required(),
-  status: yup.string().required(),
+  status: yup
+    .mixed<InvoiceStatus>()
+    .oneOf(["paid", "draft", "pending", "default"])
+    .required(),
   cart: yup
     .array()
     .of(schemaItem)
@@ -23,4 +28,4 @@ const schema = yup.object().shape({
     .min(1, "Minimum of 1 field"),
 });
 
-export default schema;
+export default invoiceSchema;

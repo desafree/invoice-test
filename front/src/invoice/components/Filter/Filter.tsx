@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import classes from "./Filter.module.scss";
 import FilterType from "../../types/types/Filter";
-import sidebar from "../../../_shared/components/Sidebar/Sidebar";
 
 interface Props {
   onChange: (newFilter: FilterType) => void;

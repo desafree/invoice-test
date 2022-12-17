@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import invoicesKeys from "../../_shared/apis/react-query/query-key-factory";
+import invoicesKeys from "../request-management/query-key/query-key-invoice-factory";
 import Invoice from "../types/interfaces/Invoice";
-import queryKeyFactory from "../../_shared/apis/react-query/query-key-factory";
+import queryKeyFactory from "../request-management/query-key/query-key-invoice-factory";
 import getInvoice from "../apis/getInvoice";
 
 const useInvoices = (id: string) => {

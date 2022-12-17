@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import updateInvoice from "../apis/updateInvoice";
 import InvoiceType from "../types/interfaces/Invoice";
-import invoicesKeys from "../../_shared/apis/react-query/query-key-factory";
+import invoicesKeys from "../request-management/query-key/query-key-invoice-factory";
 
 const useUpdateInvoice = () => {
   const queryClient = useQueryClient();
