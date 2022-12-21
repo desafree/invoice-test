@@ -1,5 +1,4 @@
 import React from "react";
-import classes from "./OptionsDetail.module.scss";
 import StatusButton from "../StatusButton/StatusButton";
 import useInvoice from "../../hooks/useInvoice";
 import { useParams } from "react-router-dom";
@@ -7,6 +6,7 @@ import useUpdateInvoice from "../../hooks/useUpdateInvoice";
 import useTheme from "../../../_shared/hooks/useTheme";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import { OptionsDetailStyled } from "./OptionsDetail.styled";
 
 const OptionsDetail = () => {
   const theme = useTheme();
@@ -23,13 +23,13 @@ const OptionsDetail = () => {
 
   if (data) {
     return (
-      <div className={`${classes.container} ${classes[theme]}`}>
+      <OptionsDetailStyled dark={theme}>
         <h5>Status</h5>
         <StatusButton status={data.status}></StatusButton>
         <EditButton id={id!}></EditButton>
         <DeleteButton id={id!}></DeleteButton>
         <button onClick={handlePaidButtonClick}>Mark as Paid</button>
-      </div>
+      </OptionsDetailStyled>
     );
   }
 

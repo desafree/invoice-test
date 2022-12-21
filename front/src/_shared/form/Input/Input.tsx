@@ -1,25 +1,26 @@
 import React, { FC } from "react";
-import classes from "./Input.module.scss";
-import { useFormContext } from "react-hook-form";
+import { InputStyled } from "./Input.styled";
+import { useController, useFormContext } from "react-hook-form";
 
 interface Props {
   name: string;
   type: "text" | "date";
-  defaultData?: string;
 }
 
 const Input: FC<Props> = ({ name, type }) => {
   const {
-    register,
-    formState: { errors },
-  } = useFormContext();
+    field,
+    fieldState: { error, invalid },
+  } = useController({
+    name,
+  });
 
   return (
-    <div className={classes.container}>
+    <InputStyled>
       <label htmlFor={name}>{name}</label>
-      <input {...register(name)} type={type} />
-      {errors[name] !== undefined && <p>{errors[name]?.message as string}</p>}
-    </div>
+      <input {...field} type={type} />
+      {invalid && <p>{error?.message}</p>}
+    </InputStyled>
   );
 };
 

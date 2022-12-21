@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import classes from "../EditButton/EditItemsList.module.scss";
+import { EditItemsStyled } from "./EditItems.styled";
 import ItemData from "../ItemData/ItemData";
 import item from "../../types/interfaces/Item";
 
@@ -9,8 +9,8 @@ interface Props {
 
 const EditItemsList: FC<Props> = ({ items }) => {
   return (
-    <div className={classes.container}>
-      <div className={classes.tags}>
+    <EditItemsStyled>
+      <div className="tags">
         <h4>Item Name</h4>
         <h4>QTY.</h4>
         <h4>Price</h4>
@@ -21,7 +21,7 @@ const EditItemsList: FC<Props> = ({ items }) => {
           return <ItemData data={item} key={item.id}></ItemData>;
         })}
       </ul>
-    </div>
+    </EditItemsStyled>
   );
 };
 

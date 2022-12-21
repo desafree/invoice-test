@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import classes from "../Item/Item.module.scss";
+import { ItemStyled } from "../Item/Item.styled";
 import deleteIcon from "../Item/icon-delete.svg";
 import { UseFieldArrayRemove, useFormContext, useWatch } from "react-hook-form";
 
@@ -19,7 +19,7 @@ const ItemForm: FC<Props> = ({ index, remove }) => {
 
   return (
     <li>
-      <div className={classes.container}>
+      <ItemStyled>
         <input
           {...register(`cart.${index}.name`, {
             required: true,
@@ -47,7 +47,7 @@ const ItemForm: FC<Props> = ({ index, remove }) => {
         >
           <img src={deleteIcon} alt="delete" />
         </button>
-      </div>
+      </ItemStyled>
     </li>
   );
 };

@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from "react";
-import classes from "./TotalItems.module.scss";
 import formatNumber from "../../../_shared/utils/formatNumber";
+import { TotalItemsStyled } from "./TotalItems.styled";
 
 interface Props {
   total: number;
@@ -8,10 +8,10 @@ interface Props {
 
 const TotalItems: FC<Props> = ({ total }) => {
   return (
-    <div className={classes.container}>
+    <TotalItemsStyled>
       <h4>Amount Due</h4>
       <h2>£ {useMemo(() => formatNumber(total), [total])}</h2>
-    </div>
+    </TotalItemsStyled>
   );
 };
 

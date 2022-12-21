@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import classes from "./StatusButton.module.scss";
 import Filter from "../../types/types/Filter";
+import { StatusButtonStyled } from "./StatusButton.styled";
 
 interface Props {
   status: Filter;
@@ -8,10 +8,10 @@ interface Props {
 
 const StatusButton: FC<Props> = ({ status }) => {
   return (
-    <div className={`${classes.container} ${classes[status]}`}>
+    <StatusButtonStyled status={status}>
       <span></span>
       {status}
-    </div>
+    </StatusButtonStyled>
   );
 };
 

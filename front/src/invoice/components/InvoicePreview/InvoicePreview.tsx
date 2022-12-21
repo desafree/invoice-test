@@ -1,15 +1,12 @@
-import React, { FC, useContext } from "react";
-import classes from "./InvoicePreview.module.scss";
+import React, { FC } from "react";
 import StatusButton from "../StatusButton/StatusButton";
 import Invoice from "../../types/interfaces/Invoice";
 import formatDate from "../../../_shared/utils/formatDate";
 import formatNumber from "../../../_shared/utils/formatNumber";
-import Filter from "../../types/types/Filter";
 import { Link } from "react-router-dom";
-import { useMemo } from "react";
-import themeContext from "../../../_shared/styles/theme/themeContext";
 import arrowIcon from "./icon-arrow-right.svg";
 import useTheme from "../../../_shared/hooks/useTheme";
+import { InvoicePreviewStyled } from "./InvocePreview.styled";
 
 interface Props {
   data: Invoice;
@@ -21,7 +18,7 @@ const InvoicePreview: FC<Props> = ({ data }) => {
   const formattedDate = formatDate(data.paymentDue);
 
   return (
-    <li className={`${classes.container} ${classes[theme]}`}>
+    <InvoicePreviewStyled dark={theme}>
       <h4>
         <span>#</span>
         {data.id}
@@ -33,7 +30,7 @@ const InvoicePreview: FC<Props> = ({ data }) => {
       <Link to={`/${data.id}`}>
         <img src={arrowIcon} alt="arrow right" />
       </Link>
-    </li>
+    </InvoicePreviewStyled>
   );
 };
 

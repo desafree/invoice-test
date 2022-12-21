@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import useTrigger from "../../../_shared/hooks/useTrigger";
 import PopUpWrapper from "../../../_shared/components/PopUpWrapper/PopUpWrapper";
-import FormEditLogic from "../FormEditLogic/FormEditLogic";
+import FormEditLogic from "../FormEditContainer/FormEditContainer";
 
 interface Props {
   id: string;

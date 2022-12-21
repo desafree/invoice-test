@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import classes from "./Select.module.scss";
+import { SelectStyled } from "./Select.styled";
 import FieldName from "../../../invoice/types/types/FieldNames";
-import { useFormContext } from "react-hook-form";
+import { useController } from "react-hook-form";
 
 interface Props {
   name: FieldName;
@@ -10,14 +10,16 @@ interface Props {
 
 const Select: FC<Props> = ({ name, values }) => {
   const {
-    register,
-    formState: { errors },
-  } = useFormContext();
+    field,
+    fieldState: { error, invalid },
+  } = useController({
+    name,
+  });
 
   return (
-    <div className={classes.container}>
+    <SelectStyled>
       <label htmlFor={name}>{name}</label>
-      <select id={name} {...register(name)}>
+      <select id={name} {...field}>
         {values.map((value) => {
           return (
             <option value={value} key={value}>
@@ -26,8 +28,8 @@ const Select: FC<Props> = ({ name, values }) => {
           );
         })}
       </select>
-      {errors[name] !== undefined && <p>{errors[name]?.message as string}</p>}
-    </div>
+      {invalid && <p>{error?.message}</p>}
+    </SelectStyled>
   );
 };
 

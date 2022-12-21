@@ -1,6 +1,5 @@
 import React, { FC, useContext } from "react";
 import useGoHome from "../../../_shared/hooks/useGoHome";
-import classes from "../DeleteButton/DeletePopUp.module.scss";
 import useDeleteInvoice from "../../hooks/useDeleteInvoice";
 import stopEventBubbling from "../../../_shared/utils/stopEventBubbling";
 import useTheme from "../../../_shared/hooks/useTheme";
@@ -8,10 +7,11 @@ import useTheme from "../../../_shared/hooks/useTheme";
 interface Props {
   close: () => void;
   id: string;
+  className?: string;
+  dark?: string;
 }
 
-const DeletePopUp: FC<Props> = ({ close, id }) => {
-  const theme = useTheme();
+const DeletePopUp: FC<Props> = ({ close, id, className }) => {
   const goHome = useGoHome();
   const deleteInvoice = useDeleteInvoice();
 
@@ -22,7 +22,7 @@ const DeletePopUp: FC<Props> = ({ close, id }) => {
   };
 
   return (
-    <div className={`${classes.container} ${classes[theme]}`} onClick={close}>
+    <div className={className} onClick={close}>
       <div
         onClick={(e) => {
           stopEventBubbling(e);
@@ -33,7 +33,7 @@ const DeletePopUp: FC<Props> = ({ close, id }) => {
           Are you sure you want to delete invoice #{id}? This action cannot be
           undone.
         </p>
-        <div className={classes.buttons}>
+        <div className="buttons">
           <button onClick={close}>Cancel</button>
           <button onClick={handleDeleteButtonClick}>Delete</button>
         </div>

@@ -1,12 +1,12 @@
 import React from "react";
-import classes from "./FormOptions.module.scss";
 import createEmptyDataField from "../../utils/createEmptyDataField";
 import { useFormContext } from "react-hook-form";
+import { FormOptionsStyled } from "./FormOptions.styled";
 
 const FormOptions = () => {
   const { reset } = useFormContext();
   return (
-    <div className={classes.container}>
+    <FormOptionsStyled>
       <button
         onClick={() => {
           reset(createEmptyDataField());
@@ -16,7 +16,7 @@ const FormOptions = () => {
         Discard
       </button>
       <button type="submit">Save & Send</button>
-    </div>
+    </FormOptionsStyled>
   );
 };
 

@@ -1,24 +1,25 @@
 import React from "react";
-import useFormHook from "../hooks/useFormHook";
+import { UseFormReturn } from "../hooks/useForm";
 import { FormProvider } from "react-hook-form";
 
-type FormProps = {
+type FormProps<T extends Record<string, any>> = {
   children: React.ReactNode;
-  onSubmit: any;
-  formContextValue: ReturnType<typeof useFormHook>;
+  onSubmit: (data: T) => void;
+  formContextValue: UseFormReturn<T>;
+  formRef: React.ForwardedRef<HTMLFormElement>;
 };
 
-const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
+function Form<T extends Record<string, any>>(props: FormProps<T>) {
   return (
     <FormProvider {...props.formContextValue}>
       <form
         onSubmit={props.formContextValue.handleSubmit(props.onSubmit)}
-        ref={ref}
+        ref={props.formRef}
       >
         {props.children}
       </form>
     </FormProvider>
   );
-});
+}
 
 export default Form;

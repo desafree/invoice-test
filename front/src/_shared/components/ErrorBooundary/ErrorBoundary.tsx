@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
-import classes from "./ErrorBoundary.module.scss";
+import { ErrorBoundaryStyled } from "./ErrorBoundary.styled";
 
 interface Props {
   children?: ReactNode;
@@ -25,9 +25,9 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className={classes.container}>
+        <ErrorBoundaryStyled>
           <h1>Sorry.. there was an error</h1>
-        </div>
+        </ErrorBoundaryStyled>
       );
     }
 

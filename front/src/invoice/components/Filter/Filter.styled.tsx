@@ -1,0 +1,22 @@
+import styled from "styled-components";
+import Filter from "./Filter";
+
+export const FilterStyled = styled(Filter)`
+  background: transparent;
+  border: 1px solid #c3c3c3;
+  color: #0c0e16;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  text-align: left;
+  font-family: "League Spartan", sans-serif;
+  margin-right: 40px;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+
+  option {
+    border-bottom: 1px solid #c3c3c3;
+    padding: 10px;
+  }
+`;

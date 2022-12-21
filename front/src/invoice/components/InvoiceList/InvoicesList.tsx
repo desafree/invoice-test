@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import classes from "./InvoicesList.module.scss";
 import InvoicePreview from "../InvoicePreview/InvoicePreview";
 import Filter from "../../types/types/Filter";
 import useInvoicesFiltered from "../../hooks/useInvoiceFiltered";
 import NoInvoice from "../NoInvoice/NoInvoice";
 import useTheme from "../../../_shared/hooks/useTheme";
+import { InvoicesListStyled } from "./InvoicesList.styled";
 
 interface Props {
   activeFilter: Filter;
@@ -16,7 +16,7 @@ const InvoicesList: FC<Props> = ({ activeFilter }) => {
 
   if (data) {
     return (
-      <ul className={`${classes.container} ${classes[theme]}`}>
+      <InvoicesListStyled dark={theme}>
         {data.length === 0 ? (
           <NoInvoice></NoInvoice>
         ) : (
@@ -26,7 +26,7 @@ const InvoicesList: FC<Props> = ({ activeFilter }) => {
             );
           })
         )}
-      </ul>
+      </InvoicesListStyled>
     );
   }
 

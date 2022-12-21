@@ -1,11 +1,14 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import classes from "./AddInvoice.module.scss";
+import React, { FC, useLayoutEffect } from "react";
 import useTrigger from "../../../_shared/hooks/useTrigger";
 import plusIcon from "./icon-plus.svg";
-import FormAddLogic from "../FormAddLogic/FormAddLogic";
+import FormAddContainer from "../FormAddContainer/FormAddContainer";
 import PopUpWrapper from "../../../_shared/components/PopUpWrapper/PopUpWrapper";
 
-const AddInvoice = () => {
+interface Props {
+  className?: string;
+}
+
+const AddInvoice: FC<Props> = ({ className }) => {
   const { trigger, handleTrigger } = useTrigger();
 
   useLayoutEffect(() => {
@@ -25,7 +28,7 @@ const AddInvoice = () => {
   return (
     <>
       <button
-        className={classes.container}
+        className={className}
         onClick={(e) => {
           e.stopPropagation();
           handleTrigger();
@@ -38,7 +41,7 @@ const AddInvoice = () => {
       </button>
       {trigger && (
         <PopUpWrapper>
-          <FormAddLogic close={handleTrigger}></FormAddLogic>
+          <FormAddContainer close={handleTrigger}></FormAddContainer>
         </PopUpWrapper>
       )}
     </>

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import classes from "./Sidebar.module.scss";
-import ThemeContext from "../../styles/theme/themeContext";
+import ThemeContext from "../../styles/theme/context/themeContext";
 import moonIcon from "./icon-moon.svg";
 import logo from "./logo.svg";
+import { SidebarStyled } from "./Sidebar.styled";
 
 const Sidebar = () => {
   const { changeTheme } = useContext(ThemeContext);
@@ -12,14 +12,14 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className={classes.container}>
+    <SidebarStyled>
       <span>
         <img src={logo} alt="logo" />
       </span>
       <button onClick={handleClick}>
         <img src={moonIcon} alt="moon" />
       </button>
-    </nav>
+    </SidebarStyled>
   );
 };
 

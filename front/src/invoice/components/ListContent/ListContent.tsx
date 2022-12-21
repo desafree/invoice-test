@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import classes from "./ListContent.module.scss";
 import OptionsRow from "../OptionsRow/OptionsRow";
 import InvoicesList from "../InvoiceList/InvoicesList";
 import Filter from "../../types/types/Filter";
 import ErrorBoundary from "../../../_shared/components/ErrorBooundary/ErrorBoundary";
+import { ListContentStyled } from "./ListContent.styled";
 
 const ListContent = () => {
   const [activeFilter, setActiveFilter] = useState<Filter>("default");
@@ -12,7 +12,7 @@ const ListContent = () => {
   };
 
   return (
-    <main className={classes.container}>
+    <ListContentStyled>
       <ErrorBoundary>
         <OptionsRow
           handleFilter={handleFilter}
@@ -22,7 +22,7 @@ const ListContent = () => {
       <ErrorBoundary>
         <InvoicesList activeFilter={activeFilter}></InvoicesList>
       </ErrorBoundary>
-    </main>
+    </ListContentStyled>
   );
 };
 

@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import classes from "./OptionsRow.module.scss";
-import Filter from "../Filter/Filter";
-import AddInvoice from "../AddInvoice/AddInvoice";
 import FilterType from "../../types/types/Filter";
 import useInvoicesFiltered from "../../hooks/useInvoiceFiltered";
 import useTheme from "../../../_shared/hooks/useTheme";
+import { AddInvoiceStyled } from "../AddInvoice/AddInvoice.styled";
+import { FilterStyled } from "../Filter/Filter.styled";
+import { OptionsRowStyled } from "./OptionsRow.styled";
 
 interface Props {
   handleFilter: (newFilter: FilterType) => void;
@@ -16,8 +16,8 @@ const OptionsRow: FC<Props> = ({ handleFilter, filter }) => {
   const { data } = useInvoicesFiltered(filter);
 
   return (
-    <div className={`${classes.container} ${classes[theme]}`}>
-      <div className={classes.title}>
+    <OptionsRowStyled dark={theme}>
+      <div className="title">
         <h2>Invoices</h2>
         <p>
           {data?.length || 0 > 0
@@ -25,9 +25,9 @@ const OptionsRow: FC<Props> = ({ handleFilter, filter }) => {
             : "No invoices"}
         </p>
       </div>
-      <Filter onChange={handleFilter}></Filter>
-      <AddInvoice></AddInvoice>
-    </div>
+      <FilterStyled onChange={handleFilter}></FilterStyled>
+      <AddInvoiceStyled></AddInvoiceStyled>
+    </OptionsRowStyled>
   );
 };
 

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import classes from "./InvoiceContainer.module.scss";
 import InvoiceData from "../InvoiceData/InvoiceData";
 import EditItemsList from "../EditItemsList/EditItemsList";
 import TotalItems from "../TotalItems/TotalItems";
 import useInvoice from "../../hooks/useInvoice";
 import { useParams } from "react-router-dom";
 import useTheme from "../../../_shared/hooks/useTheme";
+import { InvoiceContainerStyled } from "./InvoiceContainer.styled";
 
 const InvoiceContainer = () => {
   const { id } = useParams();
@@ -14,11 +14,11 @@ const InvoiceContainer = () => {
 
   if (data) {
     return (
-      <div className={`${classes.container} ${classes[theme]}`}>
+      <InvoiceContainerStyled dark={theme}>
         <InvoiceData data={data}></InvoiceData>
         <EditItemsList items={data.items}></EditItemsList>
         <TotalItems total={data.total}></TotalItems>
-      </div>
+      </InvoiceContainerStyled>
     );
   }
 
